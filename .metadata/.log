@@ -76,3 +76,6 @@ org.eclipse.core.commands.NotHandledException: There is no handler to execute fo
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-08-07 23:01:52.923
 !MESSAGE Indexed 'App_1_1_Grupo_3_2024' (26 sources, 89 headers) in 5.39 sec: 6,664 declarations; 34,925 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0048%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-08-07 23:25:48.154
+!MESSAGE Indexed 'App_1_2_Grupo_3_2024' (26 sources, 126 headers) in 6.74 sec: 13,555 declarations; 56,286 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.34%)
