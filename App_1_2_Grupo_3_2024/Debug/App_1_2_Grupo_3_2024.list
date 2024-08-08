@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0000500c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000dff5  00000000  00000000  0000503c  2**0
+ 13 .debug_info   0000e094  00000000  00000000  0000503c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00001c69  00000000  00000000  00013031  2**0
+ 14 .debug_abbrev 00001c6d  00000000  00000000  000130d0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000b28  00000000  00000000  00014ca0  2**3
+ 15 .debug_aranges 00000b30  00000000  00000000  00014d40  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 0000089e  00000000  00000000  000157c8  2**0
+ 16 .debug_rnglists 000008a5  00000000  00000000  00015870  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00023cd5  00000000  00000000  00016066  2**0
+ 17 .debug_macro  00023cd5  00000000  00000000  00016115  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000cd5e  00000000  00000000  00039d3b  2**0
+ 18 .debug_line   0000ce5a  00000000  00000000  00039dea  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000d9e14  00000000  00000000  00046a99  2**0
+ 19 .debug_str    000d9e1f  00000000  00000000  00046c44  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  001208ad  2**0
+ 20 .comment      00000043  00000000  00000000  00120a63  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00002f30  00000000  00000000  001208f0  2**2
+ 21 .debug_frame  00002f54  00000000  00000000  00120aa8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000097  00000000  00000000  00123820  2**0
+ 22 .debug_line_str 00000097  00000000  00000000  001239fc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -401,10 +401,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  secuencia_actual = secuencia1(vector_Pin_LEDs);
+	  secuencia_actual = secuencia2(vector_Pin_LEDs);
  800050c:	463b      	mov	r3, r7
  800050e:	4618      	mov	r0, r3
- 8000510:	f000 f9c4 	bl	800089c <secuencia1>
+ 8000510:	f000 f9c4 	bl	800089c <secuencia2>
  8000514:	4603      	mov	r3, r0
  8000516:	71fb      	strb	r3, [r7, #7]
  8000518:	bf00      	nop
@@ -993,49 +993,45 @@ static void MX_GPIO_Init(void)
  8000894:	40021800 	.word	0x40021800
  8000898:	40020800 	.word	0x40020800
 
-0800089c <secuencia1>:
+0800089c <secuencia2>:
+	}
+	return 1;
+}
 
-/* USER CODE BEGIN 4 */
-
-uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
+uint8_t secuencia2(uint16_t* vector_Pin_LEDs)
 {
  800089c:	b580      	push	{r7, lr}
  800089e:	b088      	sub	sp, #32
  80008a0:	af00      	add	r7, sp, #0
  80008a2:	6078      	str	r0, [r7, #4]
-	 * Si el boton no es presionado continua hasta terminar el ciclo de encendido, luego de
-	 * apagado, para cada led. Al final termina la funcion retornando "1", para que al volver
-	 * al main, vuelva a ejecutarse la secuencia 1 y continue.
-	 *
-	 * */
-	for(int i=0;i<CANTIDAD_LEDS;i++){
- 80008a4:	2300      	movs	r3, #0
+	for(int i=(CANTIDAD_LEDS-1);i>=0;i--){
+ 80008a4:	2302      	movs	r3, #2
  80008a6:	61fb      	str	r3, [r7, #28]
- 80008a8:	e07a      	b.n	80009a0 <secuencia1+0x104>
+ 80008a8:	e07a      	b.n	80009a0 <secuencia2+0x104>
 		/*TIEMPO DE ENCENDIDO*/
 		for(int tick=0;tick<RETARDO_MS;tick++){
  80008aa:	2300      	movs	r3, #0
  80008ac:	61bb      	str	r3, [r7, #24]
- 80008ae:	e035      	b.n	800091c <secuencia1+0x80>
+ 80008ae:	e035      	b.n	800091c <secuencia2+0x80>
 			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
  80008b0:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 80008b4:	483e      	ldr	r0, [pc, #248]	@ (80009b0 <secuencia1+0x114>)
+ 80008b4:	483e      	ldr	r0, [pc, #248]	@ (80009b0 <secuencia2+0x114>)
  80008b6:	f001 f8d1 	bl	8001a5c <HAL_GPIO_ReadPin>
  80008ba:	4603      	mov	r3, r0
  80008bc:	2b01      	cmp	r3, #1
- 80008be:	d11d      	bne.n	80008fc <secuencia1+0x60>
+ 80008be:	d11d      	bne.n	80008fc <secuencia2+0x60>
 				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
  80008c0:	bf00      	nop
  80008c2:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 80008c6:	483a      	ldr	r0, [pc, #232]	@ (80009b0 <secuencia1+0x114>)
+ 80008c6:	483a      	ldr	r0, [pc, #232]	@ (80009b0 <secuencia2+0x114>)
  80008c8:	f001 f8c8 	bl	8001a5c <HAL_GPIO_ReadPin>
  80008cc:	4603      	mov	r3, r0
  80008ce:	2b01      	cmp	r3, #1
- 80008d0:	d0f7      	beq.n	80008c2 <secuencia1+0x26>
+ 80008d0:	d0f7      	beq.n	80008c2 <secuencia2+0x26>
 				for(int j=0;j<CANTIDAD_LEDS;j++){
  80008d2:	2300      	movs	r3, #0
  80008d4:	617b      	str	r3, [r7, #20]
- 80008d6:	e00c      	b.n	80008f2 <secuencia1+0x56>
+ 80008d6:	e00c      	b.n	80008f2 <secuencia2+0x56>
 					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
  80008d8:	697b      	ldr	r3, [r7, #20]
  80008da:	005b      	lsls	r3, r3, #1
@@ -1044,7 +1040,7 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  80008e0:	881b      	ldrh	r3, [r3, #0]
  80008e2:	2200      	movs	r2, #0
  80008e4:	4619      	mov	r1, r3
- 80008e6:	4833      	ldr	r0, [pc, #204]	@ (80009b4 <secuencia1+0x118>)
+ 80008e6:	4833      	ldr	r0, [pc, #204]	@ (80009b4 <secuencia2+0x118>)
  80008e8:	f001 f8d0 	bl	8001a8c <HAL_GPIO_WritePin>
 				for(int j=0;j<CANTIDAD_LEDS;j++){
  80008ec:	697b      	ldr	r3, [r7, #20]
@@ -1052,11 +1048,11 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  80008f0:	617b      	str	r3, [r7, #20]
  80008f2:	697b      	ldr	r3, [r7, #20]
  80008f4:	2b02      	cmp	r3, #2
- 80008f6:	ddef      	ble.n	80008d8 <secuencia1+0x3c>
+ 80008f6:	ddef      	ble.n	80008d8 <secuencia2+0x3c>
 				}
-				return 2;
- 80008f8:	2302      	movs	r3, #2
- 80008fa:	e055      	b.n	80009a8 <secuencia1+0x10c>
+				return 1;
+ 80008f8:	2301      	movs	r3, #1
+ 80008fa:	e055      	b.n	80009a8 <secuencia2+0x10c>
 			}
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_SET);
  80008fc:	69fb      	ldr	r3, [r7, #28]
@@ -1066,7 +1062,7 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  8000904:	881b      	ldrh	r3, [r3, #0]
  8000906:	2201      	movs	r2, #1
  8000908:	4619      	mov	r1, r3
- 800090a:	482a      	ldr	r0, [pc, #168]	@ (80009b4 <secuencia1+0x118>)
+ 800090a:	482a      	ldr	r0, [pc, #168]	@ (80009b4 <secuencia2+0x118>)
  800090c:	f001 f8be 	bl	8001a8c <HAL_GPIO_WritePin>
 			HAL_Delay(1);
  8000910:	2001      	movs	r0, #1
@@ -1077,32 +1073,32 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  800091a:	61bb      	str	r3, [r7, #24]
  800091c:	69bb      	ldr	r3, [r7, #24]
  800091e:	2bc7      	cmp	r3, #199	@ 0xc7
- 8000920:	ddc6      	ble.n	80008b0 <secuencia1+0x14>
+ 8000920:	ddc6      	ble.n	80008b0 <secuencia2+0x14>
 		}
 		/*TIEMPO DE APAGADO*/
 		for(int tick=0;tick<RETARDO_MS;tick++){
  8000922:	2300      	movs	r3, #0
  8000924:	613b      	str	r3, [r7, #16]
- 8000926:	e035      	b.n	8000994 <secuencia1+0xf8>
+ 8000926:	e035      	b.n	8000994 <secuencia2+0xf8>
 			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
  8000928:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 800092c:	4820      	ldr	r0, [pc, #128]	@ (80009b0 <secuencia1+0x114>)
+ 800092c:	4820      	ldr	r0, [pc, #128]	@ (80009b0 <secuencia2+0x114>)
  800092e:	f001 f895 	bl	8001a5c <HAL_GPIO_ReadPin>
  8000932:	4603      	mov	r3, r0
  8000934:	2b01      	cmp	r3, #1
- 8000936:	d11d      	bne.n	8000974 <secuencia1+0xd8>
+ 8000936:	d11d      	bne.n	8000974 <secuencia2+0xd8>
 				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
  8000938:	bf00      	nop
  800093a:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 800093e:	481c      	ldr	r0, [pc, #112]	@ (80009b0 <secuencia1+0x114>)
+ 800093e:	481c      	ldr	r0, [pc, #112]	@ (80009b0 <secuencia2+0x114>)
  8000940:	f001 f88c 	bl	8001a5c <HAL_GPIO_ReadPin>
  8000944:	4603      	mov	r3, r0
  8000946:	2b01      	cmp	r3, #1
- 8000948:	d0f7      	beq.n	800093a <secuencia1+0x9e>
+ 8000948:	d0f7      	beq.n	800093a <secuencia2+0x9e>
 				for(int j=0;j<CANTIDAD_LEDS;j++){
  800094a:	2300      	movs	r3, #0
  800094c:	60fb      	str	r3, [r7, #12]
- 800094e:	e00c      	b.n	800096a <secuencia1+0xce>
+ 800094e:	e00c      	b.n	800096a <secuencia2+0xce>
 					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
  8000950:	68fb      	ldr	r3, [r7, #12]
  8000952:	005b      	lsls	r3, r3, #1
@@ -1111,7 +1107,7 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  8000958:	881b      	ldrh	r3, [r3, #0]
  800095a:	2200      	movs	r2, #0
  800095c:	4619      	mov	r1, r3
- 800095e:	4815      	ldr	r0, [pc, #84]	@ (80009b4 <secuencia1+0x118>)
+ 800095e:	4815      	ldr	r0, [pc, #84]	@ (80009b4 <secuencia2+0x118>)
  8000960:	f001 f894 	bl	8001a8c <HAL_GPIO_WritePin>
 				for(int j=0;j<CANTIDAD_LEDS;j++){
  8000964:	68fb      	ldr	r3, [r7, #12]
@@ -1119,11 +1115,11 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  8000968:	60fb      	str	r3, [r7, #12]
  800096a:	68fb      	ldr	r3, [r7, #12]
  800096c:	2b02      	cmp	r3, #2
- 800096e:	ddef      	ble.n	8000950 <secuencia1+0xb4>
+ 800096e:	ddef      	ble.n	8000950 <secuencia2+0xb4>
 				}
-				return 2;
- 8000970:	2302      	movs	r3, #2
- 8000972:	e019      	b.n	80009a8 <secuencia1+0x10c>
+				return 1;
+ 8000970:	2301      	movs	r3, #1
+ 8000972:	e019      	b.n	80009a8 <secuencia2+0x10c>
 			}
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
  8000974:	69fb      	ldr	r3, [r7, #28]
@@ -1133,7 +1129,7 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  800097c:	881b      	ldrh	r3, [r3, #0]
  800097e:	2200      	movs	r2, #0
  8000980:	4619      	mov	r1, r3
- 8000982:	480c      	ldr	r0, [pc, #48]	@ (80009b4 <secuencia1+0x118>)
+ 8000982:	480c      	ldr	r0, [pc, #48]	@ (80009b4 <secuencia2+0x118>)
  8000984:	f001 f882 	bl	8001a8c <HAL_GPIO_WritePin>
 			HAL_Delay(1);
  8000988:	2001      	movs	r0, #1
@@ -1144,18 +1140,18 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
  8000992:	613b      	str	r3, [r7, #16]
  8000994:	693b      	ldr	r3, [r7, #16]
  8000996:	2bc7      	cmp	r3, #199	@ 0xc7
- 8000998:	ddc6      	ble.n	8000928 <secuencia1+0x8c>
-	for(int i=0;i<CANTIDAD_LEDS;i++){
+ 8000998:	ddc6      	ble.n	8000928 <secuencia2+0x8c>
+	for(int i=(CANTIDAD_LEDS-1);i>=0;i--){
  800099a:	69fb      	ldr	r3, [r7, #28]
- 800099c:	3301      	adds	r3, #1
+ 800099c:	3b01      	subs	r3, #1
  800099e:	61fb      	str	r3, [r7, #28]
  80009a0:	69fb      	ldr	r3, [r7, #28]
- 80009a2:	2b02      	cmp	r3, #2
- 80009a4:	dd81      	ble.n	80008aa <secuencia1+0xe>
+ 80009a2:	2b00      	cmp	r3, #0
+ 80009a4:	da81      	bge.n	80008aa <secuencia2+0xe>
 		}
 	}
-	return 1;
- 80009a6:	2301      	movs	r3, #1
+	return 2;
+ 80009a6:	2302      	movs	r3, #2
 }
  80009a8:	4618      	mov	r0, r3
  80009aa:	3720      	adds	r7, #32

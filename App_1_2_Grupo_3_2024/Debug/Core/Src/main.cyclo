@@ -5,4 +5,5 @@
 ../Core/Src/main.c:259:13:MX_USB_OTG_FS_PCD_Init	2
 ../Core/Src/main.c:294:13:MX_GPIO_Init	1
 ../Core/Src/main.c:346:9:secuencia1	10
-../Core/Src/main.c:398:6:Error_Handler	1
+../Core/Src/main.c:391:9:secuencia2	10
+../Core/Src/main.c:429:6:Error_Handler	1
