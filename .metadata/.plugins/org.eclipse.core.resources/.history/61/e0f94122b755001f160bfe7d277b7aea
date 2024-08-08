@@ -399,9 +399,9 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS], GPIO_PIN_RESET);
 			HAL_Delay(1);
 		}
-		*ptr_led_actual = (i+estado_inicial-1)%CANTIDAD_LEDS;
+		*ptr_led_actual = (i+estado_inicial)%CANTIDAD_LEDS;
 	}
-	*ptr_led_actual = estado_inicial;
+	*ptr_led_actual = (estado_inicial)%CANTIDAD_LEDS;
 	return 1;
 }
 
@@ -434,7 +434,7 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 		}
 		*ptr_led_actual = (i+estado_inicial+1)%CANTIDAD_LEDS;
 	}
-	*ptr_led_actual = estado_inicial;
+	*ptr_led_actual = (estado_inicial)%CANTIDAD_LEDS;
 	return 2;
 }
 
