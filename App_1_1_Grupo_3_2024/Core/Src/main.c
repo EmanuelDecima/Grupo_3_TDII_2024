@@ -103,7 +103,12 @@ int main(void)
   MX_ETH_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
+
   /* USER CODE BEGIN 2 */
+
+  GPIO_TypeDef* vector_Port_LEDs[CANTIDAD_LEDS] = {LD1_GPIO_Port, LD2_GPIO_Port, LD3_GPIO_Port};
+  uint16_t vector_Pin_LEDs[CANTIDAD_LEDS] = {LD1_Pin, LD2_Pin, LD3_Pin};
+  uint8_t retardo_ms = 200;
 
   /* USER CODE END 2 */
 
@@ -111,6 +116,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  for(int i=0; i<CANTIDAD_LEDS;i++){
+		  HAL_GPIO_TogglePin(vector_Port_LEDs[i], vector_Pin_LEDs[i]);
+		  HAL_Delay(retardo_ms);
+		  HAL_GPIO_TogglePin(vector_Port_LEDs[i], vector_Pin_LEDs[i]);
+		  HAL_Delay(retardo_ms);
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
