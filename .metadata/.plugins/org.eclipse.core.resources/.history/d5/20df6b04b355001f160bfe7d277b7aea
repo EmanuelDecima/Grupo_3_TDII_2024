@@ -57,8 +57,8 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
-uint8_t secuencia1(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t estado_inicial);
-uint8_t secuencia2(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t estado_inicial);
+uint8_t secuencia1(uint16_t* vector_Pin_LEDs, uint8_t estado_inicial);
+uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t estado_inicial);
 
 /* USER CODE END EFP */
 
