@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := App_1_1_Grupo_3_2024
+BUILD_ARTIFACT_NAME := App_1_2_Grupo_3_2024
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-App_1_1_Grupo_3_2024.elf \
+App_1_2_Grupo_3_2024.elf \
 
 MAP_FILES += \
-App_1_1_Grupo_3_2024.map \
+App_1_2_Grupo_3_2024.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-App_1_1_Grupo_3_2024.list \
+App_1_2_Grupo_3_2024.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: App_1_1_Grupo_3_2024.elf secondary-outputs
+main-build: App_1_2_Grupo_3_2024.elf secondary-outputs
 
 # Tool invocations
-App_1_1_Grupo_3_2024.elf App_1_1_Grupo_3_2024.map: $(OBJS) $(USER_OBJS) C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\App_1_1_Grupo_3_2024\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "App_1_1_Grupo_3_2024.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\App_1_1_Grupo_3_2024\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_1_1_Grupo_3_2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+App_1_2_Grupo_3_2024.elf App_1_2_Grupo_3_2024.map: $(OBJS) $(USER_OBJS) C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\App_1_2_Grupo_3_2024\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "App_1_2_Grupo_3_2024.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\App_1_2_Grupo_3_2024\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_1_2_Grupo_3_2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-App_1_1_Grupo_3_2024.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "App_1_1_Grupo_3_2024.list"
+App_1_2_Grupo_3_2024.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "App_1_2_Grupo_3_2024.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) App_1_1_Grupo_3_2024.elf App_1_1_Grupo_3_2024.list App_1_1_Grupo_3_2024.map default.size.stdout
+	-$(RM) App_1_2_Grupo_3_2024.elf App_1_2_Grupo_3_2024.list App_1_2_Grupo_3_2024.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

@@ -106,12 +106,16 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 
+  uint16_t vector_Pin_LEDs[CANTIDAD_LEDS] = {LD1_Pin, LD2_Pin, LD3_Pin};
+  uint8_t secuencia_actual = 1;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  secuencia_actual = secuencia1(vector_Pin_LEDs);
 
     /* USER CODE END WHILE */
 
@@ -338,6 +342,52 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
+{
+
+	/*
+	 * Para poder leer el un cambio en el estado del boton (sin utilizar interrupciones),
+	 * lo que se hace es hacer la tecnica de Polling. Esto consiste en verificar continuamente
+	 * el estado del boton.
+	 * Cada milisegundo se verifica si el boton se ha presionado, si es asi, se apagan todos
+	 * los leds y se sale de la funcion retornando "2", esto para que al volver al main, la
+	 * secuencia a ejecutarse luego sea la secuencia 2.
+	 *
+	 * Si el boton no es presionado continua hasta terminar el ciclo de encendido, luego de
+	 * apagado, para cada led. Al final termina la funcion retornando "1", para que al volver
+	 * al main, vuelva a ejecutarse la secuencia 1 y continue.
+	 *
+	 * */
+	for(int i=0;i<CANTIDAD_LEDS;i++){
+		/*TIEMPO DE ENCENDIDO*/
+		for(int tick=0;tick<RETARDO_MS;tick++){
+			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
+				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
+				for(int j=0;j<CANTIDAD_LEDS;j++){
+					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+				}
+				return 2;
+			}
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_SET);
+			HAL_Delay(1);
+		}
+		/*TIEMPO DE APAGADO*/
+		for(int tick=0;tick<RETARDO_MS;tick++){
+			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
+				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
+				for(int j=0;j<CANTIDAD_LEDS;j++){
+					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+				}
+				return 2;
+			}
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
+			HAL_Delay(1);
+		}
+	}
+	return 1;
+}
+
 
 /* USER CODE END 4 */
 
