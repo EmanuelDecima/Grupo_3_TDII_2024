@@ -118,6 +118,7 @@ int main(void)
   while (1)
   {
 	  secuencia_actual = secuencia1(vector_Pin_LEDs, &led_actual, estado_inicial);
+	  estado_inicial = led_actual;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

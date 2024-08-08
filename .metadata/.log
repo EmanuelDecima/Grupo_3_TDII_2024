@@ -181,3 +181,24 @@ org.eclipse.core.commands.NotHandledException: There is no handler to execute fo
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-08-08 14:37:26.776
 !MESSAGE Indexed 'App_1_2_Grupo_3_2024' (26 sources, 126 headers) in 6.65 sec: 13,571 declarations; 56,454 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.34%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-08-08 15:11:10.108
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 9 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-08-08 15:11:10.109
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-08-08 15:11:49.275
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 10 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-08-08 15:11:49.276
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-08-08 15:13:17.102
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 11 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-08-08 15:13:17.103
+!MESSAGE Existing sessions are:
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-08-08 15:26:43.632
+!MESSAGE Indexed 'App_1_2_Grupo_3_2024' (26 sources, 126 headers) in 8.68 sec: 13,581 declarations; 56,482 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.34%)
