@@ -114,7 +114,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  secuencia_actual = secuencia4(vector_Pin_LEDs);
+	  switch(secuencia_actual){
+	  	  case 1:
+	  		  secuencia_actual = secuencia1(vector_Pin_LEDs, 150);
+	  		  break;
+	  	  case 2:
+	  		  secuencia_actual = secuencia2(vector_Pin_LEDs, 300);
+	  		  break;
+	  	  case 3:
+	  		  secuencia_actual = secuencia3(vector_Pin_LEDs);
+	  		  break;
+	  	  case 4:
+	  		  secuencia_actual = secuencia4(vector_Pin_LEDs);
+	  		  break;
+	  	  default:
+	  		  for(int j=0;j<CANTIDAD_LEDS;j++){
+	  			  HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+	  		  }
+	  		  break;
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -371,9 +390,9 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
 		return 1;
 }
 
-uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
+uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint16_t retardo_ms){
 	/*TIEMPO DE ENCENDIDO*/
-	for(int tick=0;tick<retardo_ms;tick++){
+	for(int tick=0;tick<(retardo_ms/2);tick++){
 		if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
 			while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
 			for(int j=0;j<CANTIDAD_LEDS;j++){
@@ -387,7 +406,7 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
 		}
 	}
 	/*TIEMPO DE APAGADO*/
-	for(int tick=0;tick<retardo_ms;tick++){
+	for(int tick=0;tick<(retardo_ms/2);tick++){
 		if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
 			while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
 			for(int j=0;j<CANTIDAD_LEDS;j++){
@@ -411,7 +430,7 @@ uint8_t secuencia3(uint16_t* vector_Pin_LEDs){
 			for(int j=0;j<CANTIDAD_LEDS;j++){
 				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
 			}
-			return 3;
+			return 4;
 		}
 		if((tick%100) == 0){
 			HAL_GPIO_TogglePin(GPIOB, vector_Pin_LEDs[0]);
@@ -424,6 +443,7 @@ uint8_t secuencia3(uint16_t* vector_Pin_LEDs){
 		}
 		HAL_Delay(1);
 	}
+	return 3;
 }
 
 uint8_t secuencia4(uint16_t* vector_Pin_LEDs){
@@ -443,7 +463,7 @@ uint8_t secuencia4(uint16_t* vector_Pin_LEDs){
 			for(int j=0;j<CANTIDAD_LEDS;j++){
 				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
 			}
-			return 3;
+			return 1;
 		}
 		if((tick%150) == 0){
 			for(int i=0;i<CANTIDAD_LEDS;i++){
@@ -452,6 +472,7 @@ uint8_t secuencia4(uint16_t* vector_Pin_LEDs){
 		}
 		HAL_Delay(1);
 	}
+	return 4;
 }
 
 /* USER CODE END 4 */
