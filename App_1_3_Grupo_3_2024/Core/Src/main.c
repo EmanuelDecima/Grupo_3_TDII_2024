@@ -114,7 +114,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  secuencia_actual = secuencia2(vector_Pin_LEDs, 300);
+	  secuencia_actual = secuencia3(vector_Pin_LEDs);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -379,7 +379,7 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
 			for(int j=0;j<CANTIDAD_LEDS;j++){
 				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
 			}
-			return 2;
+			return 3;
 		}
 		for(int j=0; j<CANTIDAD_LEDS;j++){
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_SET);
@@ -393,12 +393,36 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
 			for(int j=0;j<CANTIDAD_LEDS;j++){
 				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
 			}
-			return 2;
+			return 3;
 		}
 		for(int j=0; j<CANTIDAD_LEDS;j++){
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
 			HAL_Delay(1);
 		}
+	}
+	return 2;
+}
+
+uint8_t secuencia3(uint16_t* vector_Pin_LEDs){
+	/*TIEMPO DE ENCENDIDO*/
+	for(int tick=0;tick<1200;tick++){
+		if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
+			while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
+			for(int j=0;j<CANTIDAD_LEDS;j++){
+				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+			}
+			return 3;
+		}
+		if((tick%100) == 0){
+			HAL_GPIO_TogglePin(GPIOB, vector_Pin_LEDs[0]);
+		}
+		if((tick%300) == 0){
+			HAL_GPIO_TogglePin(GPIOB, vector_Pin_LEDs[1]);
+		}
+		if((tick%600) == 0){
+			HAL_GPIO_TogglePin(GPIOB, vector_Pin_LEDs[2]);
+		}
+		HAL_Delay(1);
 	}
 }
 
