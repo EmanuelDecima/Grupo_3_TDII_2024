@@ -42,6 +42,9 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
+#define CANTIDAD_LEDS 3
+#define OPCIONES_FRECUENCIAS 4
+
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -53,6 +56,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+
+uint8_t secuencia(uint16_t* vector_Pin_LEDs, uint16_t frecuencia, uint8_t opcion);
 
 /* USER CODE END EFP */
 
