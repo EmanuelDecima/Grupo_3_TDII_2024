@@ -1,0 +1,4 @@
+../Core/Src/main.c:129:6:SystemClock_Config	88	static,ignoring_inline_asm
+../Core/Src/main.c:344:9:secuencia1	40	static
+../Core/Src/main.c:78:5:main	64	static,ignoring_inline_asm
+../Core/Src/main.c:380:6:Error_Handler	0	static,ignoring_inline_asm
