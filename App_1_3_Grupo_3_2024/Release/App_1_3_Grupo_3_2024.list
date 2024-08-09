@@ -395,64 +395,67 @@ Disassembly of section .text:
  8000578:	40023800 	.word	0x40023800
  800057c:	40007000 	.word	0x40007000
 
-08000580 <secuencia3>:
+08000580 <secuencia4>:
  8000580:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8000582:	4f24      	ldr	r7, [pc, #144]	@ (8000614 <secuencia3+0x94>)
- 8000584:	4e24      	ldr	r6, [pc, #144]	@ (8000618 <secuencia3+0x98>)
- 8000586:	4605      	mov	r5, r0
- 8000588:	2400      	movs	r4, #0
- 800058a:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 800058e:	4638      	mov	r0, r7
- 8000590:	f000 fde2 	bl	8001158 <HAL_GPIO_ReadPin>
- 8000594:	2801      	cmp	r0, #1
- 8000596:	d114      	bne.n	80005c2 <secuencia3+0x42>
- 8000598:	4c1e      	ldr	r4, [pc, #120]	@ (8000614 <secuencia3+0x94>)
- 800059a:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
- 800059e:	4620      	mov	r0, r4
- 80005a0:	f000 fdda 	bl	8001158 <HAL_GPIO_ReadPin>
- 80005a4:	2801      	cmp	r0, #1
- 80005a6:	d0f8      	beq.n	800059a <secuencia3+0x1a>
- 80005a8:	4e1b      	ldr	r6, [pc, #108]	@ (8000618 <secuencia3+0x98>)
- 80005aa:	1eac      	subs	r4, r5, #2
- 80005ac:	3504      	adds	r5, #4
- 80005ae:	f834 1f02 	ldrh.w	r1, [r4, #2]!
- 80005b2:	2200      	movs	r2, #0
- 80005b4:	4630      	mov	r0, r6
- 80005b6:	f000 fdd5 	bl	8001164 <HAL_GPIO_WritePin>
- 80005ba:	42ac      	cmp	r4, r5
- 80005bc:	d1f7      	bne.n	80005ae <secuencia3+0x2e>
- 80005be:	2003      	movs	r0, #3
- 80005c0:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
- 80005c2:	2264      	movs	r2, #100	@ 0x64
- 80005c4:	fb94 f3f2 	sdiv	r3, r4, r2
- 80005c8:	fb02 4313 	mls	r3, r2, r3, r4
- 80005cc:	b91b      	cbnz	r3, 80005d6 <secuencia3+0x56>
- 80005ce:	8829      	ldrh	r1, [r5, #0]
+ 8000582:	4e24      	ldr	r6, [pc, #144]	@ (8000614 <secuencia4+0x94>)
+ 8000584:	4604      	mov	r4, r0
+ 8000586:	2500      	movs	r5, #0
+ 8000588:	f015 0201 	ands.w	r2, r5, #1
+ 800058c:	f834 1015 	ldrh.w	r1, [r4, r5, lsl #1]
+ 8000590:	bf18      	it	ne
+ 8000592:	2201      	movne	r2, #1
+ 8000594:	4630      	mov	r0, r6
+ 8000596:	3501      	adds	r5, #1
+ 8000598:	f000 fde4 	bl	8001164 <HAL_GPIO_WritePin>
+ 800059c:	2d03      	cmp	r5, #3
+ 800059e:	d1f3      	bne.n	8000588 <secuencia4+0x8>
+ 80005a0:	4f1d      	ldr	r7, [pc, #116]	@ (8000618 <secuencia4+0x98>)
+ 80005a2:	4e1c      	ldr	r6, [pc, #112]	@ (8000614 <secuencia4+0x94>)
+ 80005a4:	2500      	movs	r5, #0
+ 80005a6:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
+ 80005aa:	4638      	mov	r0, r7
+ 80005ac:	f000 fdd4 	bl	8001158 <HAL_GPIO_ReadPin>
+ 80005b0:	2801      	cmp	r0, #1
+ 80005b2:	d114      	bne.n	80005de <secuencia4+0x5e>
+ 80005b4:	4d18      	ldr	r5, [pc, #96]	@ (8000618 <secuencia4+0x98>)
+ 80005b6:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
+ 80005ba:	4628      	mov	r0, r5
+ 80005bc:	f000 fdcc 	bl	8001158 <HAL_GPIO_ReadPin>
+ 80005c0:	2801      	cmp	r0, #1
+ 80005c2:	d0f8      	beq.n	80005b6 <secuencia4+0x36>
+ 80005c4:	4e13      	ldr	r6, [pc, #76]	@ (8000614 <secuencia4+0x94>)
+ 80005c6:	1ea5      	subs	r5, r4, #2
+ 80005c8:	3404      	adds	r4, #4
+ 80005ca:	f835 1f02 	ldrh.w	r1, [r5, #2]!
+ 80005ce:	2200      	movs	r2, #0
  80005d0:	4630      	mov	r0, r6
- 80005d2:	f000 fdcc 	bl	800116e <HAL_GPIO_TogglePin>
- 80005d6:	f44f 7296 	mov.w	r2, #300	@ 0x12c
- 80005da:	fb94 f3f2 	sdiv	r3, r4, r2
- 80005de:	fb02 4313 	mls	r3, r2, r3, r4
- 80005e2:	b91b      	cbnz	r3, 80005ec <secuencia3+0x6c>
- 80005e4:	8869      	ldrh	r1, [r5, #2]
- 80005e6:	4630      	mov	r0, r6
- 80005e8:	f000 fdc1 	bl	800116e <HAL_GPIO_TogglePin>
- 80005ec:	f44f 7216 	mov.w	r2, #600	@ 0x258
- 80005f0:	fb94 f3f2 	sdiv	r3, r4, r2
- 80005f4:	fb02 4313 	mls	r3, r2, r3, r4
- 80005f8:	b91b      	cbnz	r3, 8000602 <secuencia3+0x82>
- 80005fa:	88a9      	ldrh	r1, [r5, #4]
+ 80005d2:	f000 fdc7 	bl	8001164 <HAL_GPIO_WritePin>
+ 80005d6:	42ac      	cmp	r4, r5
+ 80005d8:	d1f7      	bne.n	80005ca <secuencia4+0x4a>
+ 80005da:	2003      	movs	r0, #3
+ 80005dc:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 80005de:	2296      	movs	r2, #150	@ 0x96
+ 80005e0:	fb95 f3f2 	sdiv	r3, r5, r2
+ 80005e4:	fb02 5313 	mls	r3, r2, r3, r5
+ 80005e8:	b13b      	cbz	r3, 80005fa <secuencia4+0x7a>
+ 80005ea:	2001      	movs	r0, #1
+ 80005ec:	3501      	adds	r5, #1
+ 80005ee:	f000 fab5 	bl	8000b5c <HAL_Delay>
+ 80005f2:	f5b5 7f96 	cmp.w	r5, #300	@ 0x12c
+ 80005f6:	d1d6      	bne.n	80005a6 <secuencia4+0x26>
+ 80005f8:	e7f0      	b.n	80005dc <secuencia4+0x5c>
+ 80005fa:	8821      	ldrh	r1, [r4, #0]
  80005fc:	4630      	mov	r0, r6
  80005fe:	f000 fdb6 	bl	800116e <HAL_GPIO_TogglePin>
- 8000602:	2001      	movs	r0, #1
- 8000604:	3401      	adds	r4, #1
- 8000606:	f000 faa9 	bl	8000b5c <HAL_Delay>
- 800060a:	f5b4 6f96 	cmp.w	r4, #1200	@ 0x4b0
- 800060e:	d1bc      	bne.n	800058a <secuencia3+0xa>
- 8000610:	e7d6      	b.n	80005c0 <secuencia3+0x40>
- 8000612:	bf00      	nop
- 8000614:	40020800 	.word	0x40020800
- 8000618:	40020400 	.word	0x40020400
+ 8000602:	8861      	ldrh	r1, [r4, #2]
+ 8000604:	4630      	mov	r0, r6
+ 8000606:	f000 fdb2 	bl	800116e <HAL_GPIO_TogglePin>
+ 800060a:	88a1      	ldrh	r1, [r4, #4]
+ 800060c:	4630      	mov	r0, r6
+ 800060e:	f000 fdae 	bl	800116e <HAL_GPIO_TogglePin>
+ 8000612:	e7ea      	b.n	80005ea <secuencia4+0x6a>
+ 8000614:	40020400 	.word	0x40020400
+ 8000618:	40020800 	.word	0x40020800
 
 0800061c <main>:
  800061c:	b570      	push	{r4, r5, r6, lr}
@@ -617,7 +620,7 @@ Disassembly of section .text:
  80007b4:	9007      	str	r0, [sp, #28]
  80007b6:	f8ad 3020 	strh.w	r3, [sp, #32]
  80007ba:	a807      	add	r0, sp, #28
- 80007bc:	f7ff fee0 	bl	8000580 <secuencia3>
+ 80007bc:	f7ff fee0 	bl	8000580 <secuencia4>
  80007c0:	e7fb      	b.n	80007ba <main+0x19e>
  80007c2:	bf00      	nop
  80007c4:	40023800 	.word	0x40023800

@@ -114,7 +114,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  secuencia_actual = secuencia3(vector_Pin_LEDs);
+	  secuencia_actual = secuencia4(vector_Pin_LEDs);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -421,6 +421,34 @@ uint8_t secuencia3(uint16_t* vector_Pin_LEDs){
 		}
 		if((tick%600) == 0){
 			HAL_GPIO_TogglePin(GPIOB, vector_Pin_LEDs[2]);
+		}
+		HAL_Delay(1);
+	}
+}
+
+uint8_t secuencia4(uint16_t* vector_Pin_LEDs){
+	/*CONFIGURACION INICIAL*/
+	for(int i=0;i<CANTIDAD_LEDS;i++){
+		if((i%2 == 1)){
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_SET);
+		}else{
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
+		}
+	}
+
+	/*SECUENCIA*/
+	for(int tick=0;tick<300;tick++){
+		if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
+			while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
+			for(int j=0;j<CANTIDAD_LEDS;j++){
+				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+			}
+			return 3;
+		}
+		if((tick%150) == 0){
+			for(int i=0;i<CANTIDAD_LEDS;i++){
+				HAL_GPIO_TogglePin(GPIOB, vector_Pin_LEDs[i]);
+			}
 		}
 		HAL_Delay(1);
 	}
