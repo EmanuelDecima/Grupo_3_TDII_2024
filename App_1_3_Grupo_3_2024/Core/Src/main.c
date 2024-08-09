@@ -114,7 +114,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  secuencia_actual = secuencia1(vector_Pin_LEDs);
+	  secuencia_actual = secuencia2(vector_Pin_LEDs, 300);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -341,10 +341,10 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-uint8_t secuencia1(uint16_t* vector_Pin_LEDs){
+uint8_t secuencia1(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
 	for(int i=0; i<CANTIDAD_LEDS;i++){
 			/*TIEMPO DE ENCENDIDO*/
-			for(int tick=0;tick<RETARDO_MS;tick++){
+			for(int tick=0;tick<retardo_ms;tick++){
 				if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
 					while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
 					for(int j=0;j<CANTIDAD_LEDS;j++){
@@ -356,7 +356,7 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs){
 				HAL_Delay(1);
 			}
 			/*TIEMPO DE APAGADO*/
-			for(int tick=0;tick<RETARDO_MS;tick++){
+			for(int tick=0;tick<retardo_ms;tick++){
 				if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
 					while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
 					for(int j=0;j<CANTIDAD_LEDS;j++){
@@ -369,6 +369,37 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs){
 			}
 		}
 		return 1;
+}
+
+uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms){
+	/*TIEMPO DE ENCENDIDO*/
+	for(int tick=0;tick<retardo_ms;tick++){
+		if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
+			while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
+			for(int j=0;j<CANTIDAD_LEDS;j++){
+				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+			}
+			return 2;
+		}
+		for(int j=0; j<CANTIDAD_LEDS;j++){
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_SET);
+			HAL_Delay(1);
+		}
+	}
+	/*TIEMPO DE APAGADO*/
+	for(int tick=0;tick<retardo_ms;tick++){
+		if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
+			while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
+			for(int j=0;j<CANTIDAD_LEDS;j++){
+				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+			}
+			return 2;
+		}
+		for(int j=0; j<CANTIDAD_LEDS;j++){
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+			HAL_Delay(1);
+		}
+	}
 }
 
 /* USER CODE END 4 */

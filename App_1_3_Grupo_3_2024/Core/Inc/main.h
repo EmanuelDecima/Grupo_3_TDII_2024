@@ -43,7 +43,6 @@ extern "C" {
 /* USER CODE BEGIN EC */
 
 #define CANTIDAD_LEDS 3
-#define RETARDO_MS 150
 
 /* USER CODE END EC */
 
@@ -57,7 +56,8 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
-uint8_t secuencia1(uint16_t* vector_Pin_LEDs);
+uint8_t secuencia1(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms);
+uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint8_t retardo_ms);
 
 /* USER CODE END EFP */
 
