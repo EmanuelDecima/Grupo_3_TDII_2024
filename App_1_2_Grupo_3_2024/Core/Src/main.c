@@ -23,6 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "API_GPIO.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,7 +60,7 @@ PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
+//static void MX_GPIO_Init(void);
 static void MX_ETH_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
@@ -127,7 +129,7 @@ int main(void)
 		  break;
 	  default:
 		  for(int j=0;j<CANTIDAD_LEDS;j++){
-			  HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+			  writeLedOff_GPIO(vector_Pin_LEDs[j]);
 		  }
 		  break;
 	  }
@@ -306,55 +308,7 @@ static void MX_USB_OTG_FS_PCD_Init(void)
   * @param None
   * @retval None
   */
-static void MX_GPIO_Init(void)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOG_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : USER_Btn_Pin */
-  GPIO_InitStruct.Pin = USER_Btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
-  GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_PowerSwitchOn_Pin */
-  GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(USB_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_OverCurrent_Pin */
-  GPIO_InitStruct.Pin = USB_OverCurrent_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
-
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
-}
 
 /* USER CODE BEGIN 4 */
 
@@ -377,26 +331,26 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 	for(int i=0; i<CANTIDAD_LEDS;i++){
 		/*TIEMPO DE ENCENDIDO*/
 		for(int tick=0;tick<RETARDO_MS;tick++){
-			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
-				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
-				for(int j=0;j<CANTIDAD_LEDS;j++){
-					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
-				}
+			if(readButton_GPIO()){
+				while(readButton_GPIO()){}; //Antirebote por SW
+				  for(int j=0;j<CANTIDAD_LEDS;j++){
+					  writeLedOff_GPIO(vector_Pin_LEDs[j]);
+				  }
 				return 2;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS], GPIO_PIN_SET);
+			writeLedOn_GPIO(vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS]);
 			HAL_Delay(1);
 		}
 		/*TIEMPO DE APAGADO*/
 		for(int tick=0;tick<RETARDO_MS;tick++){
-			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
-				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
-				for(int j=0;j<CANTIDAD_LEDS;j++){
-					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
-				}
+			if(readButton_GPIO()){
+				while(readButton_GPIO()){};
+				  for(int j=0;j<CANTIDAD_LEDS;j++){
+					  writeLedOff_GPIO(vector_Pin_LEDs[j]);
+				  }
 				return 2;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS], GPIO_PIN_RESET);
+			writeLedOff_GPIO(vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS]);
 			HAL_Delay(1);
 		}
 		*ptr_led_actual = (i+estado_inicial-1)%CANTIDAD_LEDS;
@@ -410,26 +364,26 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 	for(int i=(CANTIDAD_LEDS-1);i>=0;i--){
 		/*TIEMPO DE ENCENDIDO*/
 		for(int tick=0;tick<RETARDO_MS;tick++){
-			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
-				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){}; //Antirebote por SW
+			if(readButton_GPIO()){
+				while(readButton_GPIO() == GPIO_PIN_SET){}; //Antirebote por SW
 				for(int j=0;j<CANTIDAD_LEDS;j++){
-					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+					writeLedOff_GPIO(vector_Pin_LEDs[j]);
 				}
 				return 1;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial+1)%CANTIDAD_LEDS], GPIO_PIN_SET);
+			writeLedOn_GPIO(vector_Pin_LEDs[(i+estado_inicial+1)%CANTIDAD_LEDS]);
 			HAL_Delay(1);
 		}
 		/*TIEMPO DE APAGADO*/
 		for(int tick=0;tick<RETARDO_MS;tick++){
-			if(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){
-				while(HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == GPIO_PIN_SET){};
+			if(readButton_GPIO()){
+				while(readButton_GPIO()){};
 				for(int j=0;j<CANTIDAD_LEDS;j++){
-					HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
+					writeLedOff_GPIO(vector_Pin_LEDs[j]);
 				}
 				return 1;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial+1)%CANTIDAD_LEDS], GPIO_PIN_RESET);
+			writeLedOff_GPIO(vector_Pin_LEDs[(i+estado_inicial+1)%CANTIDAD_LEDS]);
 			HAL_Delay(1);
 		}
 		*ptr_led_actual = (i+estado_inicial+1)%CANTIDAD_LEDS;

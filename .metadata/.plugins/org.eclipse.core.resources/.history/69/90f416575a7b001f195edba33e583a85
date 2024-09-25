@@ -1,0 +1,28 @@
+/*
+ * API_GPIO.h
+ *
+ *  Created on: Sep 24, 2024
+ *      Author: Enrique Emanuel Decima
+ */
+
+#ifndef API_INC_API_GPIO_H_
+#define API_INC_API_GPIO_H_
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#define LD1_Pin LED1
+#define LD2_Pin LED2
+#define LD3_Pin LED3
+
+typedef uint16_t led_t;
+
+
+void MX_GPIO_Init(void);
+
+void writeLedOn_GPIO(led_t LDx);
+void writeLedOff_GPIO(led_t LDx);
+void toggleLed_GPIO(led_t LDx);
+
+
+#endif /* API_INC_API_GPIO_H_ */

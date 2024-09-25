@@ -10,6 +10,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/API/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
@@ -60,8 +61,8 @@ all: main-build
 main-build: App_1_2_Grupo_3_2024.elf secondary-outputs
 
 # Tool invocations
-App_1_2_Grupo_3_2024.elf App_1_2_Grupo_3_2024.map: $(OBJS) $(USER_OBJS) C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\App_1_2_Grupo_3_2024\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "App_1_2_Grupo_3_2024.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\App_1_2_Grupo_3_2024\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_1_2_Grupo_3_2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+App_1_2_Grupo_3_2024.elf App_1_2_Grupo_3_2024.map: $(OBJS) $(USER_OBJS) C:\Users\emanu\STM32CubeIDE\Grupo_3_TDII_2024\App_1_2_Grupo_3_2024\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "App_1_2_Grupo_3_2024.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\emanu\STM32CubeIDE\Grupo_3_TDII_2024\App_1_2_Grupo_3_2024\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="App_1_2_Grupo_3_2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
