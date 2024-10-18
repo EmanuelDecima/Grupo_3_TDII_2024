@@ -1,7 +1,7 @@
-../Core/Src/main.c:148:6:SystemClock_Config	3
-../Core/Src/main.c:363:9:secuencia1	10
-../Core/Src/main.c:393:9:secuencia2	11
-../Core/Src/main.c:425:9:secuencia3	8
-../Core/Src/main.c:449:9:secuencia4	8
-../Core/Src/main.c:78:5:main	9
-../Core/Src/main.c:484:6:Error_Handler	1
+../Core/Src/main.c:150:6:SystemClock_Config	3
+../Core/Src/main.c:316:9:secuencia1	8
+../Core/Src/main.c:346:9:secuencia2	9
+../Core/Src/main.c:378:9:secuencia3	7
+../Core/Src/main.c:402:9:secuencia4	5
+../Core/Src/main.c:80:5:main	8
+../Core/Src/main.c:437:6:Error_Handler	1
