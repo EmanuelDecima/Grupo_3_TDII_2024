@@ -1,5 +1,0 @@
-../Drivers/API/Src/API_GPIO.c:19:6:MX_GPIO_Init	72	static
-../Drivers/API/Src/API_GPIO.c:76:6:writeLedOn_GPIO	0	static
-../Drivers/API/Src/API_GPIO.c:86:6:writeLedOff_GPIO	0	static
-../Drivers/API/Src/API_GPIO.c:95:6:toggleLed	0	static
-../Drivers/API/Src/API_GPIO.c:104:16:readButton_GPIO	8	static

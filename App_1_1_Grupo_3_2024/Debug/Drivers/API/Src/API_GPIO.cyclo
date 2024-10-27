@@ -1,3 +1,0 @@
-../Drivers/API/Src/API_GPIO.c:11:6:MX_GPIO_Init	1
-../Drivers/API/Src/API_GPIO.c:26:6:toggleLed_GPIO	1
-../Drivers/API/Src/API_GPIO.c:31:6:delay_ms	1
