@@ -1,5 +1,5 @@
-../Core/Src/main.c:146:6:SystemClock_Config	3
-../Core/Src/main.c:361:9:secuencia1	10
-../Core/Src/main.c:408:9:secuencia2	10
+../Core/Src/main.c:143:6:SystemClock_Config	3
+../Core/Src/main.c:358:9:secuencia1	10
+../Core/Src/main.c:403:9:secuencia2	10
 ../Core/Src/main.c:78:5:main	7
-../Core/Src/main.c:448:6:Error_Handler	1
+../Core/Src/main.c:441:6:Error_Handler	1

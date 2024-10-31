@@ -402,8 +402,8 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint16_t retardo_ms){
 		}
 		for(int j=0; j<CANTIDAD_LEDS;j++){
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_SET);
-			HAL_Delay(1);
 		}
+    HAL_Delay(1);
 	}
 	/*TIEMPO DE APAGADO*/
 	for(int tick=0;tick<(retardo_ms/2);tick++){
@@ -416,8 +416,8 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs, uint16_t retardo_ms){
 		}
 		for(int j=0; j<CANTIDAD_LEDS;j++){
 			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[j], GPIO_PIN_RESET);
-			HAL_Delay(1);
 		}
+    HAL_Delay(1);
 	}
 	return 2;
 }

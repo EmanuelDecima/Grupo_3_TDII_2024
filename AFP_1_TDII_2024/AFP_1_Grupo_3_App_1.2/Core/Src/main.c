@@ -108,8 +108,6 @@ int main(void)
 
   uint16_t vector_Pin_LEDs[CANTIDAD_LEDS] = {LD1_Pin, LD2_Pin, LD3_Pin};
   uint8_t secuencia_actual = 1;
-  uint8_t led_actual = 0;
-  uint8_t estado_inicial = 0;
 
   /* USER CODE END 2 */
 
@@ -117,13 +115,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  estado_inicial = led_actual;
 	  switch(secuencia_actual){
 	  case 1:
-		  secuencia_actual = secuencia1(vector_Pin_LEDs, &led_actual, estado_inicial);
+		  secuencia_actual = secuencia1(vector_Pin_LEDs);
 		  break;
 	  case 2:
-		  secuencia_actual = secuencia2(vector_Pin_LEDs, &led_actual, estado_inicial);
+		  secuencia_actual = secuencia2(vector_Pin_LEDs);
 		  break;
 	  default:
 		  for(int j=0;j<CANTIDAD_LEDS;j++){
@@ -358,7 +355,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-uint8_t secuencia1(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t estado_inicial)
+uint8_t secuencia1(uint16_t* vector_Pin_LEDs)
 {
 
 	/*
@@ -384,7 +381,7 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 				}
 				return 2;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS], GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_SET);
 			HAL_Delay(1);
 		}
 		/*TIEMPO DE APAGADO*/
@@ -396,16 +393,14 @@ uint8_t secuencia1(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 				}
 				return 2;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial)%CANTIDAD_LEDS], GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
 			HAL_Delay(1);
 		}
-		*ptr_led_actual = (i+estado_inicial-1)%CANTIDAD_LEDS;
 	}
-	*ptr_led_actual = estado_inicial;
 	return 1;
 }
 
-uint8_t secuencia2(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t estado_inicial)
+uint8_t secuencia2(uint16_t* vector_Pin_LEDs)
 {
 	for(int i=(CANTIDAD_LEDS-1);i>=0;i--){
 		/*TIEMPO DE ENCENDIDO*/
@@ -417,7 +412,7 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 				}
 				return 1;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial+1)%CANTIDAD_LEDS], GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_SET);
 			HAL_Delay(1);
 		}
 		/*TIEMPO DE APAGADO*/
@@ -429,12 +424,10 @@ uint8_t secuencia2(uint16_t* vector_Pin_LEDs,uint8_t* ptr_led_actual,uint8_t est
 				}
 				return 1;
 			}
-			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[(i+estado_inicial+1)%CANTIDAD_LEDS], GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
 			HAL_Delay(1);
 		}
-		*ptr_led_actual = (i+estado_inicial+1)%CANTIDAD_LEDS;
 	}
-	*ptr_led_actual = estado_inicial;
 	return 2;
 }
 
