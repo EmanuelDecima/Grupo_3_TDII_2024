@@ -440,7 +440,7 @@ Disassembly of section .text:
  80005ea:	f000 fa81 	bl	8000af0 <writeLedOff_GPIO>
  80005ee:	88a0      	ldrh	r0, [r4, #4]
  80005f0:	f000 fa7e 	bl	8000af0 <writeLedOff_GPIO>
- 80005f4:	2d03      	cmp	r5, #3
+ 80005f4:	2d02      	cmp	r5, #2
  80005f6:	bf16      	itet	ne
  80005f8:	3501      	addne	r5, #1
  80005fa:	2500      	moveq	r5, #0
