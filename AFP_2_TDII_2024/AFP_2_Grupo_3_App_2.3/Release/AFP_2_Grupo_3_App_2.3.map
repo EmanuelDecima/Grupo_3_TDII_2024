@@ -1363,9 +1363,9 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .text.writeLedOff_GPIO
                 0x08000c74       0x10 ./Drivers/API/Src/API_GPIO.o
                 0x08000c74                writeLedOff_GPIO
- .text.toggleLed
+ .text.toggleLed_GPIO
                 0x08000c84        0xc ./Drivers/API/Src/API_GPIO.o
-                0x08000c84                toggleLed
+                0x08000c84                toggleLed_GPIO
  .text.readButton_GPIO
                 0x08000c90       0x18 ./Drivers/API/Src/API_GPIO.o
                 0x08000c90                readButton_GPIO

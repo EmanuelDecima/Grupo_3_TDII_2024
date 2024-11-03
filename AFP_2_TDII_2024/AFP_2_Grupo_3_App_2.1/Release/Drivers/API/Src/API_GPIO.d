@@ -1,5 +1,5 @@
 Drivers/API/Src/API_GPIO.o: ../Drivers/API/Src/API_GPIO.c \
- C:/Users/Estudiante.DESKTOP-5OVK98J/Desktop/afp/Grupo_3_TDII_2024/AFP_2_TDII_2024/AFP_2_Grupo_3_App_2.1/Drivers/API/Inc/API_GPIO.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_2_TDII_2024/AFP_2_Grupo_3_App_2.1/Drivers/API/Inc/API_GPIO.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -30,7 +30,7 @@ Drivers/API/Src/API_GPIO.o: ../Drivers/API/Src/API_GPIO.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
-C:/Users/Estudiante.DESKTOP-5OVK98J/Desktop/afp/Grupo_3_TDII_2024/AFP_2_TDII_2024/AFP_2_Grupo_3_App_2.1/Drivers/API/Inc/API_GPIO.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_2_TDII_2024/AFP_2_Grupo_3_App_2.1/Drivers/API/Inc/API_GPIO.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:

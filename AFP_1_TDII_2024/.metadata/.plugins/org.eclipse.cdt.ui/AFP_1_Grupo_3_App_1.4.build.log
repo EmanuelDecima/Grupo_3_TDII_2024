@@ -1,4 +1,4 @@
-12:04:55 **** Incremental Build of configuration Release for project AFP_1_Grupo_3_App_1.4 ****
+01:11:11 **** Incremental Build of configuration Release for project AFP_1_Grupo_3_App_1.4 ****
 make -j2 all 
 arm-none-eabi-size  AFP_1_Grupo_3_App_1.4.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  AFP_1_Grupo_3_App_1.4.elf
 Finished building: default.size.stdout
  
 
-12:04:55 Build Finished. 0 errors, 0 warnings. (took 683ms)
+01:11:12 Build Finished. 0 errors, 0 warnings. (took 1s.55ms)
 

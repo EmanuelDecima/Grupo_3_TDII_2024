@@ -522,10 +522,10 @@ Disassembly of section .text:
  80006c0:	2201      	movs	r2, #1
  80006c2:	4648      	mov	r0, r9
  80006c4:	f000 fea0 	bl	8001408 <HAL_GPIO_WritePin>
- 80006c8:	2001      	movs	r0, #1
- 80006ca:	f000 fb99 	bl	8000e00 <HAL_Delay>
- 80006ce:	4557      	cmp	r7, sl
- 80006d0:	d1f4      	bne.n	80006bc <secuencia2+0x68>
+ 80006c8:	4557      	cmp	r7, sl
+ 80006ca:	d1f7      	bne.n	80006bc <secuencia2+0x68>
+ 80006cc:	2001      	movs	r0, #1
+ 80006ce:	f000 fb97 	bl	8000e00 <HAL_Delay>
  80006d2:	3601      	adds	r6, #1
  80006d4:	e7c7      	b.n	8000666 <secuencia2+0x12>
  80006d6:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
@@ -555,10 +555,10 @@ Disassembly of section .text:
  8000716:	2200      	movs	r2, #0
  8000718:	4648      	mov	r0, r9
  800071a:	f000 fe75 	bl	8001408 <HAL_GPIO_WritePin>
- 800071e:	2001      	movs	r0, #1
- 8000720:	f000 fb6e 	bl	8000e00 <HAL_Delay>
- 8000724:	4557      	cmp	r7, sl
- 8000726:	d1f4      	bne.n	8000712 <secuencia2+0xbe>
+ 800071e:	4557      	cmp	r7, sl
+ 8000720:	d1f7      	bne.n	8000712 <secuencia2+0xbe>
+ 8000722:	2001      	movs	r0, #1
+ 8000724:	f000 fb6c 	bl	8000e00 <HAL_Delay>
  8000728:	3601      	adds	r6, #1
  800072a:	e7a3      	b.n	8000674 <secuencia2+0x20>
  800072c:	40020800 	.word	0x40020800

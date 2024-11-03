@@ -386,13 +386,13 @@ uint8_t secuencia3(uint16_t* vector_Pin_LEDs){
 			return 4;
 		}
 		if((tick%100) == 0){
-			toggleLed(vector_Pin_LEDs[0]);
+			toggleLed_GPIO(vector_Pin_LEDs[0]);
 		}
 		if((tick%300) == 0){
-			toggleLed(vector_Pin_LEDs[1]);
+			toggleLed_GPIO(vector_Pin_LEDs[1]);
 		}
 		if((tick%600) == 0){
-			toggleLed(vector_Pin_LEDs[2]);
+			toggleLed_GPIO(vector_Pin_LEDs[2]);
 		}
 		HAL_Delay(1);
 	}
@@ -420,7 +420,7 @@ uint8_t secuencia4(uint16_t* vector_Pin_LEDs){
 		}
 		if((tick%150) == 0){
 			for(int i=0;i<CANTIDAD_LEDS;i++){
-				toggleLed(vector_Pin_LEDs[i]);
+				toggleLed_GPIO(vector_Pin_LEDs[i]);
 			}
 		}
 		HAL_Delay(1);

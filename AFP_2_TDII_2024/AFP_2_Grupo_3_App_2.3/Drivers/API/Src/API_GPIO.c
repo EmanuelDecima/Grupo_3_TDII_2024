@@ -92,7 +92,7 @@ void writeLedOff_GPIO(led_t LDx){
  * @param led_t LDx
  * @retval None
  */
-void toggleLed(led_t LDx){
+void toggleLed_GPIO(led_t LDx){
 	HAL_GPIO_TogglePin(GPIOB, LDx);
 }
 

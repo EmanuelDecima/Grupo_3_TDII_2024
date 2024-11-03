@@ -351,7 +351,7 @@ uint8_t secuencia(uint16_t* vector_Pin_LEDs, uint16_t frecuencia, uint8_t opcion
 			for(int i=0;i<CANTIDAD_LEDS;i++){
 				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
 			}
-			if(opcion != 3){
+			if(opcion != (OPCIONES_FRECUENCIAS-1)){
 				return (opcion+1);
 			}else{
 				return 0;
@@ -369,7 +369,7 @@ uint8_t secuencia(uint16_t* vector_Pin_LEDs, uint16_t frecuencia, uint8_t opcion
 			for(int i=0;i<CANTIDAD_LEDS;i++){
 				HAL_GPIO_WritePin(GPIOB, vector_Pin_LEDs[i], GPIO_PIN_RESET);
 			}
-			if(opcion != 3){
+			if(opcion != (OPCIONES_FRECUENCIAS-1)){
 				return (opcion+1);
 			}else{
 				return 0;
