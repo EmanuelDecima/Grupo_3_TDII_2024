@@ -166,7 +166,7 @@ int main(void)
 		  estado_boton = false;
 	  }
 
-	  if(delayRead(&timer_secuencia1) && secuencia_actual ==1){
+	  if(delayRead(&timer_secuencia1) && secuencia_actual == 1){
 		  if(estado_led){
 			  writeLedOff_GPIO(vector_Pin_LEDs[led_actual]);
 			  if(led_actual == (CANTIDAD_LEDS-1)){
@@ -177,6 +177,20 @@ int main(void)
 			  estado_led = false;
 		  }else{
 			  writeLedOn_GPIO(vector_Pin_LEDs[led_actual]);
+			  estado_led = true;
+		  }
+	  }
+
+	  if(delayRead(&timer_secuencia2) && secuencia_actual == 2){
+		  if(estado_led){
+			  for(int i=0;i<CANTIDAD_LEDS;i++){
+				  writeLedOff_GPIO(vector_Pin_LEDs[i]);
+			  }
+			  estado_led = false;
+		  }else{
+			  for(int i=0;i<CANTIDAD_LEDS;i++){
+				  writeLedOn_GPIO(vector_Pin_LEDs[i]);
+			  }
 			  estado_led = true;
 		  }
 	  }
