@@ -195,6 +195,20 @@ int main(void)
 		  }
 	  }
 
+	  if(delayRead(&timer_secuencia4) && secuencia_actual == 4){
+		  if(estado_led){
+			  for(int i=0;i<CANTIDAD_LEDS;i++){
+				  toggleLed_GPIO(vector_Pin_LEDs[i]);
+			  }
+			  estado_led = false;
+		  }else{
+			  for(int i=0;i<CANTIDAD_LEDS;i++){
+				  toggleLed_GPIO(vector_Pin_LEDs[i]);
+			  }
+			  estado_led = true;
+		  }
+	  }
+
 
     /* USER CODE END WHILE */
 
