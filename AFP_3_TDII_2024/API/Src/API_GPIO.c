@@ -2,7 +2,7 @@
  * API_GPIO.c
  *
  *  Created on: Sep 24, 2024
- *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agust√≠n
+ *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agusti≠n
  */
 
 /*	Includes	*/
