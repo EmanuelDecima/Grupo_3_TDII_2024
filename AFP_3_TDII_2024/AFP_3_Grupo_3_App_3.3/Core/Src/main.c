@@ -107,17 +107,20 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-  uint16_t vector_Pin_LEDs[CANTIDAD_LEDS] = {LD1_Pin, LD2_Pin, LD3_Pin};
-  uint8_t secuencia_actual = 1;
+  uint16_t vector_Pin_LEDs[CANTIDAD_LEDS] = {LD1_Pin, LD2_Pin, LD3_Pin};  //Vector que contiene los pines de los leds
+  uint8_t secuencia_actual = 1;	// variable que indica que secuencia se esta ejecutando, sus valores van entre 1 y 4.
 
+  /* Aqui se crea los elementos de tipo delay_t que se utilizaran para controlar los distintos delays de las secuencias */
   delay_t timer_secuencia1;
   delay_t timer_secuencia2;
   delay_t timer_secuencia3_led1;
   delay_t timer_secuencia3_led2;
-  delay_t timer_secuencia3_led3;
+  delay_t timer_secuencia3_led3;//en la secuencia 3, hay varios elementos delay_t debido a que cada led tiene un delay de distinto tiempo
   delay_t timer_secuencia4;
-  delay_t timer_lectura_boton;
 
+  delay_t timer_lectura_boton; // este delay se usa para comprobar de manera correcta el boton
+
+  /* Aqui se establece el tiempo de duracion de cada delay*/
   delayInit(&timer_secuencia1, 150);
   delayInit(&timer_secuencia2, 300);
   delayInit(&timer_secuencia3_led1, 100);
@@ -126,17 +129,29 @@ int main(void)
   delayInit(&timer_secuencia4, 150);
   delayInit(&timer_lectura_boton, 40);
 
+  /* Variables para realizar la lectura del boton*/
   buttonStatus_t estado_boton;
-  bool_t bloqueo_boton = false;
+  bool_t bloqueo_boton = false;  // Esta variable se inicializa en "false", permitiendo la lectura del boton
 
+  /* Variables para el manejo de los led de cada secuencia */
   uint8_t led_actual = 0;
-  bool_t estado_led = false;
+  bool_t estado_led = false; // Almacena en que fase de la secuencia se encuentra el led. true-> Encendido, false-> Apagado.
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  /*
+	   * Comprobacion del estado del boton:
+	   * 1-Primero realiza una primera lectura en el momento en que se presiona el boton
+	   * 2-En ese momento inicia un conteo de 40 milisegundos
+	   * 4-Al haber transcurrido los 40 milisegundos y si el boton no se encuentra bloqueado, se toma la lectura del boton y se guarda en "estado_boton"
+	   * 5-Se bloquea el boton para que no vuelva a activar un cambio de secuencia inesperado al mantenerse presionado
+	   * (el efecto de no usar este bloque es que si el usuario mantiene presionado por un tiempo largo el boton, la secuencia cambiaria cada 40 milisegundos)
+	   * 6-Al soltarse el boton, el bloqueo del boton se desactiva
+	   * */
 	  if(readButton_GPIO()){
 		  if(delayRead(&timer_lectura_boton) && !bloqueo_boton){
 			  estado_boton = true;
@@ -145,6 +160,17 @@ int main(void)
 	  }else{
 		  bloqueo_boton = false;
 	  }
+
+
+	  /*
+	   * Esta funcion lee la lectura del boton que se tomó en la rutina anterior
+	   * Si se recibe una lectura del boton positiva (estado_boton == true), procede a:
+	   * 1- Apagar todos los leds
+	   * 2- Preparar la configuracion inicial de los leds en caso de ser necesario (Ejemplo: la secuencia 4, comienza con los leds 1 y 3 encendidos y el 2 apagado)
+	   * 3- Cambia a la secuencia siguiente, en caso de encontrarse en la secuencia 4, vuelve a la 1
+	   * 4- Cambia la variable estado_boton a false para que solo suceda una vez, y no cambie de forma indefinida la secuencia cada vez que pase por la condicional
+	   *
+	   * */
 	  if(estado_boton){
 		  for(int i=0;i<CANTIDAD_LEDS;i++){
 			  writeLedOff_GPIO(vector_Pin_LEDs[i]);
@@ -166,14 +192,19 @@ int main(void)
 		  estado_boton = false;
 	  }
 
+
+	  /* Secuencia 1*/
 	  if(delayRead(&timer_secuencia1) && secuencia_actual == 1){
 		  if(estado_led){
 			  writeLedOff_GPIO(vector_Pin_LEDs[led_actual]);
+
+			  /* Seleccionar el siguiente led de la secuencia*/
 			  if(led_actual == (CANTIDAD_LEDS-1)){
 				  led_actual = 0;
 			  }else{
 				  led_actual++;
 			  }
+
 			  estado_led = false;
 		  }else{
 			  writeLedOn_GPIO(vector_Pin_LEDs[led_actual]);
@@ -181,6 +212,8 @@ int main(void)
 		  }
 	  }
 
+
+	  /* Secuencia 2*/
 	  if(delayRead(&timer_secuencia2) && secuencia_actual == 2){
 		  if(estado_led){
 			  for(int i=0;i<CANTIDAD_LEDS;i++){
@@ -195,6 +228,8 @@ int main(void)
 		  }
 	  }
 
+
+	  /* Secuencia 3*/
 	  if(secuencia_actual == 3){
 		  if(delayRead(&timer_secuencia3_led1)){
 			  toggleLed_GPIO(vector_Pin_LEDs[0]);
@@ -208,6 +243,7 @@ int main(void)
 	  }
 
 
+	  /* Secuencia 4*/
 	  if(delayRead(&timer_secuencia4) && secuencia_actual == 4){
 		  if(estado_led){
 			  for(int i=0;i<CANTIDAD_LEDS;i++){
