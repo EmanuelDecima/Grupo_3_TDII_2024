@@ -1,0 +1,4 @@
+../Drivers/API/Src/RADAR_GPIO.c:25:6:writeLedOn_GPIO	16	static
+../Drivers/API/Src/RADAR_GPIO.c:35:6:writeLedOff_GPIO	16	static
+../Drivers/API/Src/RADAR_GPIO.c:44:6:toggleLed_GPIO	16	static
+../Drivers/API/Src/RADAR_GPIO.c:53:16:readButton_GPIO	8	static
