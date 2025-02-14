@@ -2,7 +2,7 @@
  * RADAR_HC05.h
  *
  *  Created on: Feb 14, 2025
- *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agusti­n
+ *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustin
  */
 
 #ifndef API_INC_RADAR_HC05_H_

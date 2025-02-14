@@ -193,6 +193,27 @@ Discarded input sections
  .comment       0x00000000       0x44 ./Drivers/API/Src/RADAR_HC05.o
  .ARM.attributes
                 0x00000000       0x34 ./Drivers/API/Src/RADAR_HC05.o
+ .text          0x00000000        0x0 ./Drivers/API/Src/RADAR_MEF.o
+ .data          0x00000000        0x0 ./Drivers/API/Src/RADAR_MEF.o
+ .bss           0x00000000        0x0 ./Drivers/API/Src/RADAR_MEF.o
+ .text.MEF_Init
+                0x00000000        0xc ./Drivers/API/Src/RADAR_MEF.o
+ .rodata.MEF_Update.str1.1
+                0x00000000       0x22 ./Drivers/API/Src/RADAR_MEF.o
+ .text.MEF_Update
+                0x00000000       0xd4 ./Drivers/API/Src/RADAR_MEF.o
+ .data.umbral   0x00000000        0x1 ./Drivers/API/Src/RADAR_MEF.o
+ .data.distancia
+                0x00000000        0x1 ./Drivers/API/Src/RADAR_MEF.o
+ .bss.sentido_giro
+                0x00000000        0x1 ./Drivers/API/Src/RADAR_MEF.o
+ .bss.motor_angle
+                0x00000000        0x1 ./Drivers/API/Src/RADAR_MEF.o
+ .bss.MEF_Actual
+                0x00000000        0x1 ./Drivers/API/Src/RADAR_MEF.o
+ .comment       0x00000000       0x44 ./Drivers/API/Src/RADAR_MEF.o
+ .ARM.attributes
+                0x00000000       0x34 ./Drivers/API/Src/RADAR_MEF.o
  .text          0x00000000        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
  .data          0x00000000        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
  .bss           0x00000000        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
@@ -1593,6 +1614,7 @@ LOAD ./Core/Startup/startup_stm32f429zitx.o
 LOAD ./Drivers/API/Src/RADAR_Delay.o
 LOAD ./Drivers/API/Src/RADAR_GPIO.o
 LOAD ./Drivers/API/Src/RADAR_HC05.o
+LOAD ./Drivers/API/Src/RADAR_MEF.o
 LOAD ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
 LOAD ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
 LOAD ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
