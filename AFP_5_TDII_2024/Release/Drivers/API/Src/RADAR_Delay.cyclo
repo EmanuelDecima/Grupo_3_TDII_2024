@@ -1,0 +1,4 @@
+../Drivers/API/Src/RADAR_Delay.c:16:6:SystemClock_Config	3
+../Drivers/API/Src/RADAR_Delay.c:64:6:delayInit	1
+../Drivers/API/Src/RADAR_Delay.c:75:8:delayRead	3
+../Drivers/API/Src/RADAR_Delay.c:95:6:delayWrite	1

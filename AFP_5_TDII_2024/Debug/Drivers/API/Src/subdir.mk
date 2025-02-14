@@ -6,15 +6,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Drivers/API/Src/RADAR_Delay.c \
-../Drivers/API/Src/RADAR_GPIO.c 
+../Drivers/API/Src/RADAR_GPIO.c \
+../Drivers/API/Src/RADAR_HC05.c 
 
 OBJS += \
 ./Drivers/API/Src/RADAR_Delay.o \
-./Drivers/API/Src/RADAR_GPIO.o 
+./Drivers/API/Src/RADAR_GPIO.o \
+./Drivers/API/Src/RADAR_HC05.o 
 
 C_DEPS += \
 ./Drivers/API/Src/RADAR_Delay.d \
-./Drivers/API/Src/RADAR_GPIO.d 
+./Drivers/API/Src/RADAR_GPIO.d \
+./Drivers/API/Src/RADAR_HC05.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +27,7 @@ Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API
 clean: clean-Drivers-2f-API-2f-Src
 
 clean-Drivers-2f-API-2f-Src:
-	-$(RM) ./Drivers/API/Src/RADAR_Delay.cyclo ./Drivers/API/Src/RADAR_Delay.d ./Drivers/API/Src/RADAR_Delay.o ./Drivers/API/Src/RADAR_Delay.su ./Drivers/API/Src/RADAR_GPIO.cyclo ./Drivers/API/Src/RADAR_GPIO.d ./Drivers/API/Src/RADAR_GPIO.o ./Drivers/API/Src/RADAR_GPIO.su
+	-$(RM) ./Drivers/API/Src/RADAR_Delay.cyclo ./Drivers/API/Src/RADAR_Delay.d ./Drivers/API/Src/RADAR_Delay.o ./Drivers/API/Src/RADAR_Delay.su ./Drivers/API/Src/RADAR_GPIO.cyclo ./Drivers/API/Src/RADAR_GPIO.d ./Drivers/API/Src/RADAR_GPIO.o ./Drivers/API/Src/RADAR_GPIO.su ./Drivers/API/Src/RADAR_HC05.cyclo ./Drivers/API/Src/RADAR_HC05.d ./Drivers/API/Src/RADAR_HC05.o ./Drivers/API/Src/RADAR_HC05.su
 
 .PHONY: clean-Drivers-2f-API-2f-Src
 
