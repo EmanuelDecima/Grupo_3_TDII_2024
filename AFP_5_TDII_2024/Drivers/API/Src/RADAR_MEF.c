@@ -5,7 +5,7 @@
  *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustin
  */
 
-#include "RADAR_MEF.h"
+ #include "RADAR_MEF.h"
 
 typedef enum {
 	INICIO,
@@ -18,13 +18,12 @@ typedef enum {
 MefState_t MEF_Actual;	//Variable de estado global
 
 //Servomotor
-uint8_t motor_angle = 0;
-bool sentido_giro = 0;	// 0 = horario ; 1 = Antihorario
+uint8_t motor_angle;
+bool sentido_giro;	// 0 = horario ; 1 = Antihorario
 
 //HCSR04
-uint8_t distancia = 200;	//Reemplazar cuando este lista la libreria HCSR04
-uint8_t umbral = 50;		// NOTA: ¿Pedir al usuario?
-
+distance_t distancia;
+distance_t umbral;
 
 void MEF_Init(){
 	MEF_Actual = INICIO;
@@ -32,64 +31,65 @@ void MEF_Init(){
 
 void MEF_Update(){
 	switch(MEF_Actual){
-		case INICIO:
-			HC05_SendString("INICIO\n");
-			MEF_Actual = MOVER_SERVO;
-			break;
+	case INICIO:
+		motor_angle = 0;
+		sentido_giro = 0;
+		umbral = 7;		//¿Consultar al usuario?
+		distancia = 0;
+		MEF_Actual = MOVER_SERVO;
+		break;
 
-		case MOVER_SERVO:
-			if(sentido_giro){
-				motor_angle--;
-			}else{
-				motor_angle++;
-			}
+	case MOVER_SERVO:
+		if(sentido_giro){
+			motor_angle--;		//Periodo: 1min:38s ; Giro muy lento ¿Aumentar?
+		}else{
+			motor_angle++;
+		}
+		MEF_Actual = MEDIR_DISTANCIA;
+		break;
 
-			MEF_Actual = MEDIR_DISTANCIA;
-			break;
+	case MEDIR_DISTANCIA:
+		distancia = HCSR04_GetMeasure();
+		if(distancia < umbral){
+			MEF_Actual = ALERTA;
+		}else{
+			MEF_Actual = VERIFICAR_ANGULO;
+		}
+		break;
 
-		case MEDIR_DISTANCIA:
+	case VERIFICAR_ANGULO:
+		if(motor_angle == 180){
+			sentido_giro = 1;
+		}
+		if(motor_angle == 0){
+			sentido_giro = 0;
+		}
+		if(motor_angle > 180 || motor_angle < 0){
+			Error_Handler();	//Reemplazar por una rutina de errores
+		}
+		MEF_Actual = MOVER_SERVO;
+		break;
 
-			distancia--; //Reemplazar por funcion medir distancia
+	case ALERTA:
+		HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 1);		//Crear Procedimiento para ALARMA
+		HC05_SendString("ALARMA:OBJETO DETECTADO \n");
+		HAL_Delay(500);
+		HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 0);
+		HC05_SendString("ALARMA:OBJETO DETECTADO \n");
+		HAL_Delay(500);
+		HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 1);
+		HC05_SendString("ALARMA:OBJETO DETECTADO \n");
+		HAL_Delay(500);
+		HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 0);
 
-			if(distancia < umbral){
-				MEF_Actual = ALERTA;
-			}else{
-				MEF_Actual = VERIFICAR_ANGULO;
-			}
+		MEF_Actual = MEDIR_DISTANCIA;
+		break;
 
-			break;
-
-		case VERIFICAR_ANGULO:
-			if(motor_angle == 180){
-				sentido_giro = 1;
-			}
-			if(motor_angle == 0){
-				sentido_giro = 0;
-			}
-			if(motor_angle > 180 || motor_angle < 0){
-				Error_Handler();	//Reemplazar por una rutina de errores
-			}
-			MEF_Actual = MOVER_SERVO;
-			break;
-
-		case ALERTA:
-			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, 1);
-			HC05_SendString("ALARMA:OBJETO DETECTADO \n");
-			HAL_Delay(1000);
-			HC05_SendString("ALARMA:OBJETO DETECTADO \n");
-			HAL_Delay(1000);
-			HC05_SendString("ALARMA:OBJETO DETECTADO \n");
-			HAL_Delay(1000);
-
-			distancia = 100;
-			MEF_Actual = MEDIR_DISTANCIA;
-
-			break;
-
-		default:
-			MEF_Actual = INICIO;
-			break;
+	default:
+		MEF_Actual = INICIO;
+		break;
 
 	}
 }
+
 
