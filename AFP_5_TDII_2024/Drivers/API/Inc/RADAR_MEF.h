@@ -14,6 +14,7 @@
 #include "RADAR_Delay.h"
 #include "RADAR_GPIO.h"
 #include "RADAR_HCSR04.h"
+#include "RADAR_Servo.h"
 
 void MEF_Init();
 void MEF_Update();
