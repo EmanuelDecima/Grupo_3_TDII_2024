@@ -57,39 +57,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-/*Boton de la placa*/
 #define USER_Btn_Pin GPIO_PIN_13
 #define USER_Btn_GPIO_Port GPIOC
-/*Master Clock Output*/
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOH
-
-/*BLUETOOTH CFG*/
 #define BT_EN_Pin GPIO_PIN_0
 #define BT_EN_GPIO_Port GPIOC
 #define BT_STATE_Pin GPIO_PIN_3
 #define BT_STATE_GPIO_Port GPIOC
-
-/*LEDS*/
 #define LD1_Pin GPIO_PIN_0
 #define LD1_GPIO_Port GPIOB
-#define LD2_Pin GPIO_PIN_7
-#define LD2_GPIO_Port GPIOB
 #define LD3_Pin GPIO_PIN_14
 #define LD3_GPIO_Port GPIOB
-/*BUZZER*/
-#define BUZZER_Pin GPIO_PIN_13
-#define BUZZER_GPIO_Port GPIOD
-
-/*USB*/
 #define STLK_RX_Pin GPIO_PIN_8
 #define STLK_RX_GPIO_Port GPIOD
 #define STLK_TX_Pin GPIO_PIN_9
 #define STLK_TX_GPIO_Port GPIOD
+#define BUZZER_Pin GPIO_PIN_13
+#define BUZZER_GPIO_Port GPIOD
 #define USB_PowerSwitchOn_Pin GPIO_PIN_6
 #define USB_PowerSwitchOn_GPIO_Port GPIOG
 #define USB_OverCurrent_Pin GPIO_PIN_7
 #define USB_OverCurrent_GPIO_Port GPIOG
+#define Trigger_Pin GPIO_PIN_6
+#define Trigger_GPIO_Port GPIOC
 #define USB_SOF_Pin GPIO_PIN_8
 #define USB_SOF_GPIO_Port GPIOA
 #define USB_VBUS_Pin GPIO_PIN_9
@@ -104,8 +95,8 @@ void Error_Handler(void);
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
-
-
+#define LD2_Pin GPIO_PIN_7
+#define LD2_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

@@ -35,7 +35,9 @@ Drivers/API/Src/RADAR_MEF.o: ../Drivers/API/Src/RADAR_MEF.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_HC05.h \
  C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_Delay.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_GPIO.h
+ C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_GPIO.h \
+ C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_HCSR04.h \
+ C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_Servo.h
 C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_MEF.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -74,3 +76,5 @@ C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_
 C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_HC05.h:
 C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_Delay.h:
 C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_GPIO.h:
+C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_HCSR04.h:
+C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024/Drivers/API/Inc/RADAR_Servo.h:
