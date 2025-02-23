@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024"/>
 			<item value="C:\Users\EmanuelDecima\Desktop\Proyecto FinalTDII\Grupo_3_TDII_2024"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
