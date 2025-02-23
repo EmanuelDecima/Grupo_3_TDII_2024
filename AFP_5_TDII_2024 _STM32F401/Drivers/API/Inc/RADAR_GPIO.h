@@ -1,0 +1,19 @@
+/*
+ * API_GPIO.h
+ *
+ *  Created on: Sep 24, 2024
+ *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustín
+ */
+
+#ifndef API_INC_RADAR_GPIO_H_
+#define API_INC_RADAR_GPIO_H_
+
+#include "Headers.h"
+
+typedef uint16_t led_t;
+
+void writeLedOn_GPIO(led_t LDx);
+void writeLedOff_GPIO(led_t LDx);
+void toggleLed_GPIO(led_t LDx);
+
+#endif /* API_INC_RADAR_GPIO_H_ */

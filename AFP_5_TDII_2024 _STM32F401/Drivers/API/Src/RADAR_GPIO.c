@@ -1,0 +1,40 @@
+/*
+ * API_GPIO.c
+ *
+ *  Created on: Sep 24, 2024
+ *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustin
+ */
+
+#include "RADAR_GPIO.h"
+#include "main.h"
+
+led_t LDx;
+
+/*
+ * @brief Funcion para encender el Led
+ * @param led_t LDx
+ * @retval None
+ */
+void writeLedOn_GPIO(led_t LDx){
+	HAL_GPIO_WritePin(GPIOB, LDx, GPIO_PIN_SET);
+}
+
+
+/*
+ * @brief Funcion para apagar el Led
+ * @param led_t LDx
+ * @retval None
+ */
+void writeLedOff_GPIO(led_t LDx){
+	HAL_GPIO_WritePin(GPIOB, LDx, GPIO_PIN_RESET);
+}
+
+/*
+ * @brief Funcion para cambiar el estado del Led
+ * @param led_t LDx
+ * @retval None
+ */
+void toggleLed_GPIO(led_t LDx){
+	HAL_GPIO_TogglePin(GPIOB, LDx);
+}
+
