@@ -19,8 +19,8 @@ uint32_t Difference = 0;
 bool Capture_flag = 0;
 
 /*Variables para la Aplicacion*/
-distance_t Distance = 0;
-distance_t Filter[FILTER_WIDTH];
+uint8_t Distance = 0;
+uint8_t Filter[FILTER_WIDTH];
 
 /*
  * @brief Inicializacion del Modulo Timer1 Canal1 como Input Capture
@@ -105,7 +105,7 @@ static void HCSR04_BubbleSort(){
  * @param None
  * @retval distance_t
  */
-distance_t HCSR04_GetMeasure(){
+uint8_t HCSR04_GetMeasure(){
 	HCSR04_ResetFilter();
 	HCSR04_CaptureMeasures();
 	HCSR04_BubbleSort();

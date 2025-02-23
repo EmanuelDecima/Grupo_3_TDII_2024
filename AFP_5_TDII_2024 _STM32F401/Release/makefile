@@ -53,6 +53,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 AFP_5_TDII_2024\ _STM32F401.list \
 
+OBJCOPY_HEX += \
+AFP_5_TDII_2024\ _STM32F401.hex \
+
 
 # All Target
 all: main-build
@@ -76,12 +79,17 @@ AFP_5_TDII_2024\ _STM32F401.list: $(EXECUTABLES) makefile objects.list $(OPTIONA
 	@echo 'Finished building: $@'
 	@echo ' '
 
+AFP_5_TDII_2024\ _STM32F401.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "AFP_5_TDII_2024 _STM32F401.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) AFP_5_TDII_2024\ _STM32F401.elf AFP_5_TDII_2024\ _STM32F401.list AFP_5_TDII_2024\ _STM32F401.map AFP_5_TDII_2024\\ _STM32F401.elf default.size.stdout
+	-$(RM) AFP_5_TDII_2024\ _STM32F401.elf AFP_5_TDII_2024\ _STM32F401.hex AFP_5_TDII_2024\ _STM32F401.list AFP_5_TDII_2024\ _STM32F401.map AFP_5_TDII_2024\\ _STM32F401.elf default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

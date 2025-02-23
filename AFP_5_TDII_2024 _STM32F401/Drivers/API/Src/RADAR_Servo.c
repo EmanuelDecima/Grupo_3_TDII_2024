@@ -12,7 +12,7 @@ void Servo_Init(){
 }
 
 void Servo_SetAngle(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t angle){
-	    uint32_t pulse_length = 210 + (angle * (1050 - 210) / 180);
+	 	 uint32_t pulse_length = 450 + (angle * (2350 - 450) / 180);
 	    __HAL_TIM_SET_COMPARE(htim, channel, pulse_length);
 }
 

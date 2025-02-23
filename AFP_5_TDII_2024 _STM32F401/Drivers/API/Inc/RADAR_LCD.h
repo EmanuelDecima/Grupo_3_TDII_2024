@@ -18,7 +18,8 @@ void LCD_SendData (char data);
 void LCD_SendString (char *str);
 void LCD_PutCur(int row, int col);
 void LCD_Clear (void);
-void EnteroCad(int n, char cad[]);
+void LCD_SendNumber(int number);
+void LCD_ShowData(uint8_t distance, uint8_t angle);
 
 
 

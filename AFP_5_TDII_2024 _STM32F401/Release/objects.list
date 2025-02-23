@@ -15,6 +15,7 @@
 "./Drivers/API/Src/RADAR_HCSR04.o"
 "./Drivers/API/Src/RADAR_LCD.o"
 "./Drivers/API/Src/RADAR_MEF.o"
+"./Drivers/API/Src/RADAR_SECUENCIAS.o"
 "./Drivers/API/Src/RADAR_Servo.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"

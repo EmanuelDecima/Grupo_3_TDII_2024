@@ -12,5 +12,7 @@
 
 void MEF_Init();
 void MEF_Update();
-
+uint8_t getDistance();
+uint8_t getAngle();
+void Actualizar_LCD();
 #endif /* API_INC_RADAR_MEF_H_ */

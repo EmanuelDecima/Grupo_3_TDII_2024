@@ -10,7 +10,7 @@
 
 #include "Headers.h"
 
-extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart1;
 
 void HC05_SendString(char* message);
 char HC05_ReceiveChar(uint8_t* pBuffer);

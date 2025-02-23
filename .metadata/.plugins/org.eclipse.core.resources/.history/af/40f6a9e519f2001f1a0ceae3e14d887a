@@ -1,0 +1,44 @@
+/*
+ * RADAR_SECUENCIAS.c
+ *
+ *  Created on: Feb 23, 2025
+ *      Author: Estudiante
+ */
+
+#include "RADAR_SECUENCIAS.h"
+
+void Mensaje_Activado(){
+	HAL_GPIO_WritePin(LED_ON_GPIO_Port, LED_ON_Pin, 1);
+	LCD_Clear();
+	LCD_PutCur(0, 0);
+	LCD_SendString("RADAR");
+	LCD_PutCur(1, 0);
+	LCD_SendString("ACTIVADO");
+	HC05_SendString("RADAR ACTIVADO\n");
+	HAL_Delay(2000);
+	LCD_Clear();
+}
+
+void Mensaje_Desactivado(){
+	HAL_GPIO_WritePin(LED_ON_GPIO_Port, LED_ON_Pin, 0);
+	LCD_Clear();
+	LCD_PutCur(0, 0);
+	LCD_SendString("RADAR");
+	LCD_PutCur(1, 0);
+	LCD_SendString("DESACTIVADO");
+	HC05_SendString("RADAR DESACTIVADO\n");
+	HAL_Delay(2000);
+	LCD_Clear();
+}
+
+void Mensaje_Alerta(){
+	HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, 1);
+	LCD_Clear();
+	LCD_PutCur(0, 0);
+	LCD_SendString("ALARMA");
+	LCD_PutCur(1, 0);
+	LCD_SendString("OBJETO");
+	HC05_SendString("ALARMA OBJETO DETECTADO\n");
+	HAL_Delay(2000);
+	LCD_Clear();
+}

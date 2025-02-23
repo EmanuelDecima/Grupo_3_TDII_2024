@@ -11,9 +11,8 @@
 #include "Headers.h"
 
 extern TIM_HandleTypeDef htim1;
-typedef uint8_t distance_t;
 
 void HCSR04_Init();
-distance_t HCSR04_GetMeasure();
+uint8_t HCSR04_GetMeasure();
 
 #endif /* API_INC_RADAR_HCSR04_H_ */

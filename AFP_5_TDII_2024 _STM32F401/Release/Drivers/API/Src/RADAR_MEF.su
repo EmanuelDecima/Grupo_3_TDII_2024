@@ -1,2 +1,5 @@
-../Drivers/API/Src/RADAR_MEF.c:28:6:MEF_Init	0	static
-../Drivers/API/Src/RADAR_MEF.c:32:6:MEF_Update	8	static
+../Drivers/API/Src/RADAR_MEF.c:34:6:MEF_Init	0	static
+../Drivers/API/Src/RADAR_MEF.c:38:6:MEF_Update	8	static
+../Drivers/API/Src/RADAR_MEF.c:102:9:getDistance	0	static
+../Drivers/API/Src/RADAR_MEF.c:106:9:getAngle	0	static
+../Drivers/API/Src/RADAR_MEF.c:110:6:Actualizar_LCD	0	static

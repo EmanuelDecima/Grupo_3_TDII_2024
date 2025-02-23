@@ -11,6 +11,7 @@ C_SRCS += \
 ../Drivers/API/Src/RADAR_HCSR04.c \
 ../Drivers/API/Src/RADAR_LCD.c \
 ../Drivers/API/Src/RADAR_MEF.c \
+../Drivers/API/Src/RADAR_SECUENCIAS.c \
 ../Drivers/API/Src/RADAR_Servo.c 
 
 OBJS += \
@@ -20,6 +21,7 @@ OBJS += \
 ./Drivers/API/Src/RADAR_HCSR04.o \
 ./Drivers/API/Src/RADAR_LCD.o \
 ./Drivers/API/Src/RADAR_MEF.o \
+./Drivers/API/Src/RADAR_SECUENCIAS.o \
 ./Drivers/API/Src/RADAR_Servo.o 
 
 C_DEPS += \
@@ -29,6 +31,7 @@ C_DEPS += \
 ./Drivers/API/Src/RADAR_HCSR04.d \
 ./Drivers/API/Src/RADAR_LCD.d \
 ./Drivers/API/Src/RADAR_MEF.d \
+./Drivers/API/Src/RADAR_SECUENCIAS.d \
 ./Drivers/API/Src/RADAR_Servo.d 
 
 
@@ -39,7 +42,7 @@ Drivers/API/Src/%.o Drivers/API/Src/%.su Drivers/API/Src/%.cyclo: ../Drivers/API
 clean: clean-Drivers-2f-API-2f-Src
 
 clean-Drivers-2f-API-2f-Src:
-	-$(RM) ./Drivers/API/Src/RADAR_Delay.cyclo ./Drivers/API/Src/RADAR_Delay.d ./Drivers/API/Src/RADAR_Delay.o ./Drivers/API/Src/RADAR_Delay.su ./Drivers/API/Src/RADAR_GPIO.cyclo ./Drivers/API/Src/RADAR_GPIO.d ./Drivers/API/Src/RADAR_GPIO.o ./Drivers/API/Src/RADAR_GPIO.su ./Drivers/API/Src/RADAR_HC05.cyclo ./Drivers/API/Src/RADAR_HC05.d ./Drivers/API/Src/RADAR_HC05.o ./Drivers/API/Src/RADAR_HC05.su ./Drivers/API/Src/RADAR_HCSR04.cyclo ./Drivers/API/Src/RADAR_HCSR04.d ./Drivers/API/Src/RADAR_HCSR04.o ./Drivers/API/Src/RADAR_HCSR04.su ./Drivers/API/Src/RADAR_LCD.cyclo ./Drivers/API/Src/RADAR_LCD.d ./Drivers/API/Src/RADAR_LCD.o ./Drivers/API/Src/RADAR_LCD.su ./Drivers/API/Src/RADAR_MEF.cyclo ./Drivers/API/Src/RADAR_MEF.d ./Drivers/API/Src/RADAR_MEF.o ./Drivers/API/Src/RADAR_MEF.su ./Drivers/API/Src/RADAR_Servo.cyclo ./Drivers/API/Src/RADAR_Servo.d ./Drivers/API/Src/RADAR_Servo.o ./Drivers/API/Src/RADAR_Servo.su
+	-$(RM) ./Drivers/API/Src/RADAR_Delay.cyclo ./Drivers/API/Src/RADAR_Delay.d ./Drivers/API/Src/RADAR_Delay.o ./Drivers/API/Src/RADAR_Delay.su ./Drivers/API/Src/RADAR_GPIO.cyclo ./Drivers/API/Src/RADAR_GPIO.d ./Drivers/API/Src/RADAR_GPIO.o ./Drivers/API/Src/RADAR_GPIO.su ./Drivers/API/Src/RADAR_HC05.cyclo ./Drivers/API/Src/RADAR_HC05.d ./Drivers/API/Src/RADAR_HC05.o ./Drivers/API/Src/RADAR_HC05.su ./Drivers/API/Src/RADAR_HCSR04.cyclo ./Drivers/API/Src/RADAR_HCSR04.d ./Drivers/API/Src/RADAR_HCSR04.o ./Drivers/API/Src/RADAR_HCSR04.su ./Drivers/API/Src/RADAR_LCD.cyclo ./Drivers/API/Src/RADAR_LCD.d ./Drivers/API/Src/RADAR_LCD.o ./Drivers/API/Src/RADAR_LCD.su ./Drivers/API/Src/RADAR_MEF.cyclo ./Drivers/API/Src/RADAR_MEF.d ./Drivers/API/Src/RADAR_MEF.o ./Drivers/API/Src/RADAR_MEF.su ./Drivers/API/Src/RADAR_SECUENCIAS.cyclo ./Drivers/API/Src/RADAR_SECUENCIAS.d ./Drivers/API/Src/RADAR_SECUENCIAS.o ./Drivers/API/Src/RADAR_SECUENCIAS.su ./Drivers/API/Src/RADAR_Servo.cyclo ./Drivers/API/Src/RADAR_Servo.d ./Drivers/API/Src/RADAR_Servo.o ./Drivers/API/Src/RADAR_Servo.su
 
 .PHONY: clean-Drivers-2f-API-2f-Src
 

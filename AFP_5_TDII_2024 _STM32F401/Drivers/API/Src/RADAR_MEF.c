@@ -6,6 +6,9 @@
  */
 
 #include "RADAR_MEF.h"
+#include "RADAR_Delay.h"
+
+#define VEL_MOTOR 3
 
 typedef enum {
 	INICIO,
@@ -22,8 +25,11 @@ uint8_t motor_angle;
 bool sentido_giro;	// 0 = horario ; 1 = Antihorario
 
 //HCSR04
-distance_t distancia;
-distance_t umbral;
+uint8_t distancia;
+uint8_t umbral;
+
+//LCD
+bool_t LCD_Refresh = 0;
 
 void MEF_Init(){
 	MEF_Actual = INICIO;
@@ -32,19 +38,29 @@ void MEF_Init(){
 void MEF_Update(){
 	switch(MEF_Actual){
 	case INICIO:
+		//Inicializar Modulos
+		LCD_Init();
+		HCSR04_Init();
+		Servo_Init();
+
+		//Valores Iniciales de Variables
 		motor_angle = 0;
 		sentido_giro = 0;
-		umbral = 7;		//¿Consultar al usuario?
-		distancia = 0;
+		umbral = 7;
+		distancia = 10;
+
+		Servo_SetAngle(&htim2, TIM_CHANNEL_1, motor_angle);
+		HC05_SendString("INICIO\n");
 		MEF_Actual = MOVER_SERVO;
 		break;
 
 	case MOVER_SERVO:
 		if(sentido_giro){
-			motor_angle--;		//Periodo: 1min:38s ; Giro muy lento ¿Aumentar?
+			motor_angle = motor_angle - VEL_MOTOR;		//Periodo: 1min:38s ; Giro muy lento ¿Aumentar?
 		}else{
-			motor_angle++;
+			motor_angle = motor_angle + VEL_MOTOR;
 		}
+		Servo_SetAngle(&htim2, TIM_CHANNEL_1, motor_angle);
 		MEF_Actual = MEDIR_DISTANCIA;
 		break;
 
@@ -53,6 +69,7 @@ void MEF_Update(){
 		if(distancia < umbral){
 			MEF_Actual = ALERTA;
 		}else{
+			HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, 0);
 			MEF_Actual = VERIFICAR_ANGULO;
 		}
 		break;
@@ -71,6 +88,7 @@ void MEF_Update(){
 		break;
 
 	case ALERTA:
+		Mensaje_Alerta();
 		MEF_Actual = MEDIR_DISTANCIA;
 		break;
 
@@ -81,4 +99,14 @@ void MEF_Update(){
 	}
 }
 
+uint8_t getDistance(){
+	return distancia;
+}
 
+uint8_t getAngle(){
+	return motor_angle;
+}
+
+void Actualizar_LCD(){
+	LCD_Refresh = 1;
+}

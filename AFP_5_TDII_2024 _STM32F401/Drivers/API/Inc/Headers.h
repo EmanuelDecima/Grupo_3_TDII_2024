@@ -20,6 +20,7 @@
 #include "RADAR_LCD.h"
 #include "RADAR_MEF.h"
 #include "RADAR_Servo.h"
+#include "RADAR_SECUENCIAS.h"
 
 
 #endif /* API_INC_HEADERS_H_ */

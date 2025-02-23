@@ -1,0 +1,19 @@
+/*
+ * RADAR_SECUENCIAS.c
+ *
+ *  Created on: Feb 23, 2025
+ *      Author: Estudiante
+ */
+
+#include "RADAR_SECUENCIAS.h"
+
+void Mensaje_Inicio(){
+	LCD_Clear();
+	LCD_PutCur(0, 0);
+	LCD_SendString("RADAR");
+	LCD_PutCur(1, 0);
+	LCD_SendString("ACTIVADO");
+	HC05_SendString("RADAR ACTIVADO\n");
+	HAL_Delay(2000);
+	LCD_Clear();
+}
