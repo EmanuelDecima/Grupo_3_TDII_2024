@@ -65,9 +65,7 @@ void Error_Handler(void);
 #define LED_ON_GPIO_Port GPIOB
 #define LED_ALARM_Pin GPIO_PIN_1
 #define LED_ALARM_GPIO_Port GPIOB
-#define LED_BT_ON_Pin GPIO_PIN_2
-#define LED_BT_ON_GPIO_Port GPIOB
-#define BUZZER_Pin GPIO_PIN_10
+#define BUZZER_Pin GPIO_PIN_2
 #define BUZZER_GPIO_Port GPIOB
 #define Trigger_Pin GPIO_PIN_12
 #define Trigger_GPIO_Port GPIOB

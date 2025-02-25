@@ -49,7 +49,7 @@ void MEF_Update(){
 		umbral = 7;
 		distancia = 10;
 
-		Servo_SetAngle(&htim2, TIM_CHANNEL_1, motor_angle);
+		Servo_SetAngle(&htim3, TIM_CHANNEL_1, motor_angle);
 		HC05_SendString("INICIO\n");
 		MEF_Actual = MOVER_SERVO;
 		break;
@@ -60,7 +60,7 @@ void MEF_Update(){
 		}else{
 			motor_angle = motor_angle + VEL_MOTOR;
 		}
-		Servo_SetAngle(&htim2, TIM_CHANNEL_1, motor_angle);
+		Servo_SetAngle(&htim3, TIM_CHANNEL_1, motor_angle);
 		MEF_Actual = MEDIR_DISTANCIA;
 		break;
 

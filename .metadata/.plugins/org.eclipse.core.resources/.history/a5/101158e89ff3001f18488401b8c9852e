@@ -1,0 +1,112 @@
+/*
+ * RADAR_MEF.c
+ *
+ *  Created on: Feb 14, 2025
+ *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustin
+ */
+
+#include "RADAR_MEF.h"
+#include "RADAR_Delay.h"
+
+#define VEL_MOTOR 3
+
+typedef enum {
+	INICIO,
+	MOVER_SERVO,
+	MEDIR_DISTANCIA,
+	VERIFICAR_ANGULO,
+	ALERTA
+} MefState_t;
+
+MefState_t MEF_Actual;	//Variable de estado global
+
+//Servomotor
+uint8_t motor_angle;
+bool sentido_giro;	// 0 = horario ; 1 = Antihorario
+
+//HCSR04
+uint8_t distancia;
+uint8_t umbral;
+
+//LCD
+bool_t LCD_Refresh = 0;
+
+void MEF_Init(){
+	MEF_Actual = INICIO;
+}
+
+void MEF_Update(){
+	switch(MEF_Actual){
+	case INICIO:
+		//Inicializar Modulos
+		LCD_Init();
+		HCSR04_Init();
+		Servo_Init();
+
+		//Valores Iniciales de Variables
+		motor_angle = 0;
+		sentido_giro = 0;
+		umbral = 7;
+		distancia = 10;
+
+		Servo_SetAngle(&htim2, TIM_CHANNEL_1, motor_angle);
+		HC05_SendString("INICIO\n");
+		MEF_Actual = MOVER_SERVO;
+		break;
+
+	case MOVER_SERVO:
+		if(sentido_giro){
+			motor_angle = motor_angle - VEL_MOTOR;		//Periodo: 1min:38s ; Giro muy lento ¿Aumentar?
+		}else{
+			motor_angle = motor_angle + VEL_MOTOR;
+		}
+		Servo_SetAngle(&htim2, TIM_CHANNEL_1, motor_angle);
+		MEF_Actual = MEDIR_DISTANCIA;
+		break;
+
+	case MEDIR_DISTANCIA:
+		distancia = HCSR04_GetMeasure();
+		if(distancia < umbral){
+			MEF_Actual = ALERTA;
+		}else{
+			HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, 0);
+			MEF_Actual = VERIFICAR_ANGULO;
+		}
+		break;
+
+	case VERIFICAR_ANGULO:
+		if(motor_angle == 180){
+			sentido_giro = 1;
+		}
+		if(motor_angle == 0){
+			sentido_giro = 0;
+		}
+		if(motor_angle > 180 || motor_angle < 0){
+			Error_Handler();	//Reemplazar por una rutina de errores
+		}
+		MEF_Actual = MOVER_SERVO;
+		break;
+
+	case ALERTA:
+		Mensaje_Alerta();
+		MEF_Actual = MEDIR_DISTANCIA;
+		break;
+
+	default:
+		MEF_Actual = INICIO;
+		break;
+
+	}
+}
+
+uint8_t getDistance(){
+	return distancia;
+}
+
+uint8_t getAngle(){
+	return motor_angle;
+}
+
+void Actualizar_LCD(){
+	LCD_Refresh = 1;
+}

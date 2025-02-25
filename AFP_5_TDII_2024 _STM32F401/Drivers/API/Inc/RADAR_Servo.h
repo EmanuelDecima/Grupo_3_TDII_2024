@@ -10,7 +10,7 @@
 
 #include "Headers.h"
 
-extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim3;
 
 void Servo_Init();
 void Set_Servo_Angle(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t angle);

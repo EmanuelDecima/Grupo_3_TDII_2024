@@ -4,7 +4,7 @@
  *  Created on: Feb 23, 2025
  *      Author: Estudiante
  */
-
+#include "main.h"
 #include "RADAR_SECUENCIAS.h"
 
 void Mensaje_Activado(){
@@ -33,7 +33,7 @@ void Mensaje_Desactivado(){
 
 void Mensaje_Alerta(){
 	HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, 1);
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, 1);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 1);
 	LCD_Clear();
 	LCD_PutCur(0, 0);
 	LCD_SendString("ALARMA");
@@ -41,15 +41,15 @@ void Mensaje_Alerta(){
 	LCD_SendString("OBJETO");
 	HC05_SendString("ALARMA OBJETO DETECTADO\n");
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, 0);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 0);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, 1);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 1);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, 0);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 0);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, 1);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 1);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, 0);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 0);
 	HAL_Delay(500);
 	LCD_Clear();
 }

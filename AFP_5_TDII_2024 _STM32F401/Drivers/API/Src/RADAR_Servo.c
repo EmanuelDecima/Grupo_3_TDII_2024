@@ -8,7 +8,7 @@
 #include "RADAR_Servo.h"
 
 void Servo_Init(){
-	  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 }
 
 void Servo_SetAngle(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t angle){
