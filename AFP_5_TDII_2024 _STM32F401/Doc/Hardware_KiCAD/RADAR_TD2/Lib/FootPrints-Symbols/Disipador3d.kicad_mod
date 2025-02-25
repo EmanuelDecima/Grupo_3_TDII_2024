@@ -1,0 +1,260 @@
+(footprint "Disipador3d"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "27a3b84f-6724-4c41-b511-af0974a4a90f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Disipador3d"
+		(at 0 -2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "2bf44112-e60a-49df-932a-363e5062d87a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" "FootPrints-Symbols:Disipador"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0f4ccb03-71f2-493a-a16a-f783241f2d61")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5b8ca306-5cda-42f6-9ee5-50d527acdf80")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "696cfb06-1ac2-4fc8-919f-d821bab55fb4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -11.5 -6.5)
+		(end -11.5 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "9f29e946-9fe0-4ab4-85c3-bd1ccf60d56c")
+	)
+	(fp_line
+		(start -11.5 -6.5)
+		(end -5.5 -6.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "ed45038a-4cc1-45be-b5da-375bee38b974")
+	)
+	(fp_line
+		(start -11.5 7.5)
+		(end -5.5 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "771206a7-e8bb-4f55-af27-e11f116de49a")
+	)
+	(fp_line
+		(start -5.5 -6.5)
+		(end -5.5 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "cad3e049-84ce-4773-9798-890bc5789de4")
+	)
+	(fp_line
+		(start -2 -1)
+		(end -2 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "b66e4604-48ac-4b0b-8cf4-714de4aa85e5")
+	)
+	(fp_line
+		(start -2 2)
+		(end 2 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "67e8c930-3a1d-4689-8c0c-2c8a688fe8ff")
+	)
+	(fp_line
+		(start 2 -1)
+		(end -2 -1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "6316498c-a667-4330-9c99-e868471ab5e3")
+	)
+	(fp_line
+		(start 2 2)
+		(end 2 -1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "a1f9bf61-1789-48f3-b933-f1b72cc4cc24")
+	)
+	(fp_line
+		(start 5.5 -6.5)
+		(end 5.5 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "f6229b8b-8589-4b9d-9f47-cece73dfd7e8")
+	)
+	(fp_line
+		(start 5.5 -6.5)
+		(end 11.5 -6.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "749a9df9-4901-4daf-92c2-98cc4408c683")
+	)
+	(fp_line
+		(start 5.5 -1)
+		(end -5.5 -1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "564b4925-028b-443d-9ca7-283226102e0f")
+	)
+	(fp_line
+		(start 5.5 2)
+		(end -5.5 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "5ec87d5f-abc9-4e58-ae60-3991c5a5aa4d")
+	)
+	(fp_line
+		(start 5.5 7.5)
+		(end 11.5 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "b8f5efe9-a8b7-4321-8c4f-94f98308e0df")
+	)
+	(fp_line
+		(start 11.5 -6.5)
+		(end 11.5 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "5f05f4bd-f7ab-4377-923a-9db7be6a8c1b")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 3.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a0f1b271-0122-4b6d-b957-6f40dac654d3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -9 2)
+		(size 4 4)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "535c061a-2894-4280-ac5d-fd9e2ff1b89f")
+	)
+	(pad "1" thru_hole circle
+		(at 9 2)
+		(size 4 4)
+		(drill 2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6ad86459-8df0-4cfd-b2bd-38b51e5369b8")
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Heatsink.3dshapes/Heatsink_Stonecold_HS-132_32x14mm_2xFixation1.5mm.step"
+		(offset
+			(xyz 0 2.5 1.5)
+		)
+		(scale
+			(xyz 0.7 0.6 1)
+		)
+		(rotate
+			(xyz 0 0 180)
+		)
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Heatsink.3dshapes/Heatsink_Stonecold_HS-132_32x14mm_2xFixation1.5mm.step"
+		(offset
+			(xyz 0 -3.5 1.5)
+		)
+		(scale
+			(xyz 0.7 0.6 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
