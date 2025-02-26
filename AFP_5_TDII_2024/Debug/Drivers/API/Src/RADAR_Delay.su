@@ -1,4 +1,0 @@
-../Drivers/API/Src/RADAR_Delay.c:16:6:SystemClock_Config	88	static
-../Drivers/API/Src/RADAR_Delay.c:64:6:delayInit	16	static
-../Drivers/API/Src/RADAR_Delay.c:75:8:delayRead	16	static
-../Drivers/API/Src/RADAR_Delay.c:95:6:delayWrite	16	static

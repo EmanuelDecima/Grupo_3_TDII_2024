@@ -1,3 +1,0 @@
-../Drivers/API/Src/RADAR_HCSR04.c:59:6:HCSR04_Init	0	static
-../Drivers/API/Src/RADAR_HCSR04.c:63:12:HCSR04_GetMeasure	24	static
-../Drivers/API/Src/RADAR_HCSR04.c:70:6:HAL_TIM_IC_CaptureCallback	24	static
