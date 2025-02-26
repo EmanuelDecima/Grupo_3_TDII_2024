@@ -7,49 +7,35 @@
 #include "main.h"
 #include "RADAR_SECUENCIAS.h"
 
-void Mensaje_Activado(){
-	HAL_GPIO_WritePin(LED_ON_GPIO_Port, LED_ON_Pin, 1);
-	LCD_Clear();
-	LCD_PutCur(0, 0);
-	LCD_SendString("RADAR");
-	LCD_PutCur(1, 0);
-	LCD_SendString("ACTIVADO");
-	HC05_SendString("RADAR ACTIVADO\n");
-	HAL_Delay(2000);
-	LCD_Clear();
-}
-
-void Mensaje_Desactivado(){
-	HAL_GPIO_WritePin(LED_ON_GPIO_Port, LED_ON_Pin, 0);
-	LCD_Clear();
-	LCD_PutCur(0, 0);
-	LCD_SendString("RADAR");
-	LCD_PutCur(1, 0);
-	LCD_SendString("DESACTIVADO");
-	HC05_SendString("RADAR DESACTIVADO\n");
-	HAL_Delay(2000);
-	LCD_Clear();
-}
-
+/*
+ * @brief Secuencia al detectar un objeto cercano
+ * @param None
+ * @retval None
+ */
 void Mensaje_Alerta(){
-	HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, 1);
-	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 1);
+	//Salidas Digitales
+	HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
+	//Mensaje por LCD
 	LCD_Clear();
 	LCD_PutCur(0, 0);
 	LCD_SendString("ALARMA");
 	LCD_PutCur(1, 0);
-	LCD_SendString("OBJETO");
-	HC05_SendString("ALARMA OBJETO DETECTADO\n");
+	LCD_SendString("ACTIVADA!");
+	//Mensaje por Bluetooth
+	HC05_SendString("ALARMA ACTIVADA: OBJETO DETECTADO\n");
+	//Buzzer
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 0);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 1);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 0);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 1);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
 	HAL_Delay(500);
-	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, 0);
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
 	HAL_Delay(500);
+
 	LCD_Clear();
 }

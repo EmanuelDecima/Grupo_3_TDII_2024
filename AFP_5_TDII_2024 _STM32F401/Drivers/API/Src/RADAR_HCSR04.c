@@ -33,13 +33,13 @@ void HCSR04_Init(){
 
 
 /*
- * @brief Delay en orden de microsegundos
+ * @brief Delay en el orden de los microsegundos
  * @param uint16_t us
  * @retval None
  */
 static void HCSR04_Delay_us (uint16_t us){
-	__HAL_TIM_SET_COUNTER(&htim1,0);  // set the counter value a 0
-	while (__HAL_TIM_GET_COUNTER(&htim1) < us);  // wait for the counter to reach the us input in the parameter
+	__HAL_TIM_SET_COUNTER(&htim1,0);
+	while (__HAL_TIM_GET_COUNTER(&htim1) < us);
 }
 
 
@@ -49,9 +49,9 @@ static void HCSR04_Delay_us (uint16_t us){
  * @retval None
  */
 static void HCSR04_Read(){
-	HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_SET);  // pull the TRIG pin HIGH
-	HCSR04_Delay_us(10);  // wait for 10 us
-	HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_RESET);  // pull the TRIG pin low
+	HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_SET);
+	HCSR04_Delay_us(10);
+	HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_RESET);
 	__HAL_TIM_ENABLE_IT(&htim1, TIM_IT_CC1);
 }
 
@@ -120,20 +120,19 @@ uint8_t HCSR04_GetMeasure(){
  */
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
-	if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)  // if the interrupt source is channel1
+	if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
 	{
-		if (Capture_flag==0) // if the first value is not captured
+		if (Capture_flag==0)
 		{
-			IC_Val1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1); // read the first value
-			Capture_flag = 1;  // set the first captured as true
-			// Now change the polarity to falling edge
+			IC_Val1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+			Capture_flag = 1;
 			__HAL_TIM_SET_CAPTUREPOLARITY(htim, TIM_CHANNEL_1, TIM_INPUTCHANNELPOLARITY_FALLING);
 		}
 
-		else if (Capture_flag==1)   // if the first is already captured
+		else if (Capture_flag==1)
 		{
-			IC_Val2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);  // read second value
-			__HAL_TIM_SET_COUNTER(htim, 0);  // reset the counter
+			IC_Val2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+			__HAL_TIM_SET_COUNTER(htim, 0);
 
 			if (IC_Val2 > IC_Val1)
 			{
@@ -146,9 +145,8 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 			}
 
 			Distance = Difference * .034/2;
-			Capture_flag = 0; // set it back to false
+			Capture_flag = 0;
 
-			// set polarity to rising edge
 			__HAL_TIM_SET_CAPTUREPOLARITY(htim, TIM_CHANNEL_1, TIM_INPUTCHANNELPOLARITY_RISING);
 			__HAL_TIM_DISABLE_IT(&htim1, TIM_IT_CC1);
 		}

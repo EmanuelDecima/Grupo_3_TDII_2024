@@ -11,8 +11,8 @@
 #include "Headers.h"
 
 void MEF_Init();
+uint8_t MEF_GetDistance();
+uint8_t MEF_GetAngle();
 void MEF_Update();
-uint8_t getDistance();
-uint8_t getAngle();
-void Actualizar_LCD();
+
 #endif /* API_INC_RADAR_MEF_H_ */

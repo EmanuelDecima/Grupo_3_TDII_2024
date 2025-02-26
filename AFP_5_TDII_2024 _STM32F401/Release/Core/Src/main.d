@@ -31,16 +31,15 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/i2c.h ../Core/Inc/main.h ../Core/Inc/tim.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Delay.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_GPIO.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HC05.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HCSR04.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_LCD.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_MEF.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Servo.h \
- C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_SECUENCIAS.h
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Delay.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HC05.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HCSR04.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_LCD.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_MEF.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Servo.h \
+ C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_SECUENCIAS.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -77,13 +76,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/tim.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Delay.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_GPIO.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HC05.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HCSR04.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_LCD.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_MEF.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Servo.h:
-C:/Users/EmanuelDecima/Desktop/Proyecto\ FinalTDII/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_SECUENCIAS.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Delay.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/Headers.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HC05.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_HCSR04.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_LCD.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_MEF.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_Servo.h:
+C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024\ _STM32F401/Drivers/API/Inc/RADAR_SECUENCIAS.h:

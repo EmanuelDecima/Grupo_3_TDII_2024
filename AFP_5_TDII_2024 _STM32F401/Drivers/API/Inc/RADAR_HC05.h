@@ -13,7 +13,6 @@
 extern UART_HandleTypeDef huart1;
 
 void HC05_SendString(char* message);
-char HC05_ReceiveChar(uint8_t* pBuffer);
 void HC05_SendData(uint8_t data);
 
 #endif /* API_INC_RADAR_HC05_H_ */

@@ -11,7 +11,8 @@
 
 /*
  * @brief Inicializacion del delay, establece la duracion
- * @param delay_t delay, tick_t duration
+ * @param delay_t delay
+ * @param tick_t duration
  * @retval None
  */
 void delayInit(delay_t * delay, tick_t duration){
@@ -42,7 +43,8 @@ bool_t delayRead(delay_t* delay){
 
 /*
  * @brief Reescribe el tiempo de duracion
- * @param delay_t delay, tick_t duration
+ * @param delay_t delay
+ * @param tick_t duration
  * @retval None
  */
 void delayWrite(delay_t* delay, tick_t duration){

@@ -18,18 +18,8 @@ void HC05_SendString(char* message){
 }
 
 /*
- * @brief Funcion para leer un caracter unico por Bluetooth
- * @param uint8_t* pBuffer
- * @retval char
- */
-char HC05_ReceiveChar(uint8_t* pBuffer){
-	HAL_UART_Receive(&huart1, pBuffer, 1, HAL_MAX_DELAY);
-	return *pBuffer;
-}
-
-/*
  * @brief Funcion para enviar un dato numerico por Bluetooth
- * @param led_t LDx
+ * @param uint8_t data
  * @retval None
  */
 void HC05_SendData(uint8_t data){

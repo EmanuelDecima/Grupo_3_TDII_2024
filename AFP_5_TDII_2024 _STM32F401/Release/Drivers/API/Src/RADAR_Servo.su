@@ -1,2 +1,2 @@
-../Drivers/API/Src/RADAR_Servo.c:10:6:Servo_Init	0	static
-../Drivers/API/Src/RADAR_Servo.c:14:6:Servo_SetAngle	0	static
+../Drivers/API/Src/RADAR_Servo.c:16:6:Servo_Init	0	static
+../Drivers/API/Src/RADAR_Servo.c:26:6:Servo_SetAngle	0	static

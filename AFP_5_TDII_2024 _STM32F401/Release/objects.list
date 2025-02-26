@@ -10,7 +10,6 @@
 "./Core/Src/usart.o"
 "./Core/Startup/startup_stm32f401ccux.o"
 "./Drivers/API/Src/RADAR_Delay.o"
-"./Drivers/API/Src/RADAR_GPIO.o"
 "./Drivers/API/Src/RADAR_HC05.o"
 "./Drivers/API/Src/RADAR_HCSR04.o"
 "./Drivers/API/Src/RADAR_LCD.o"

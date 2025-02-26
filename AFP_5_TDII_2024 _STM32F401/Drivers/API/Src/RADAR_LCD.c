@@ -134,6 +134,12 @@ void LCD_SendNumber(int number){
 
 }
 
+/*
+ * @brief Muestra los datos de Distancia y Angulo en la pantalla LCD
+ * @param uint8_t distance
+ * @param uint8_t angle
+ * @retval None
+ */
 void LCD_ShowData(uint8_t distance, uint8_t angle){
 	LCD_Clear();
 	LCD_PutCur(0, 0);

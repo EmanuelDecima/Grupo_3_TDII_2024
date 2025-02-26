@@ -10,8 +10,6 @@
 
 #include "Headers.h"
 
-void Mensaje_Activado();
-void Mensaje_Desactivado();
 void Mensaje_Alerta();
 
 #endif /* API_INC_RADAR_SECUENCIAS_H_ */

@@ -1,3 +1,2 @@
 ../Drivers/API/Src/RADAR_HC05.c:16:6:HC05_SendString	8	static
-../Drivers/API/Src/RADAR_HC05.c:25:6:HC05_ReceiveChar	8	static
-../Drivers/API/Src/RADAR_HC05.c:35:6:HC05_SendData	24	static
+../Drivers/API/Src/RADAR_HC05.c:25:6:HC05_SendData	24	static

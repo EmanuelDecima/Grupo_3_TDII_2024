@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include "main.h"
 #include "RADAR_Delay.h"
-#include "RADAR_GPIO.h"
 #include "RADAR_HC05.h"
 #include "RADAR_HCSR04.h"
 #include "RADAR_LCD.h"

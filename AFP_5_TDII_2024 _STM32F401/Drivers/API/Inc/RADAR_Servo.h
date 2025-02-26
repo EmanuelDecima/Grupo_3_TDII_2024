@@ -13,6 +13,6 @@
 extern TIM_HandleTypeDef htim3;
 
 void Servo_Init();
-void Set_Servo_Angle(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t angle);
+void Servo_SetAngle(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t angle);
 
 #endif /* API_INC_RADAR_SERVO_H_ */

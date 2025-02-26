@@ -6,7 +6,6 @@
  */
 
 #include "RADAR_MEF.h"
-#include "RADAR_Delay.h"
 
 #define VEL_MOTOR 3
 
@@ -26,13 +25,19 @@ bool sentido_giro;	// 0 = horario ; 1 = Antihorario
 
 //HCSR04
 uint8_t distancia;
-uint8_t umbral;
-
-//LCD
-bool_t LCD_Refresh = 0;
+uint8_t umbral;	//Predefinido en el estado "INICIO"
 
 void MEF_Init(){
 	MEF_Actual = INICIO;
+}
+
+
+uint8_t MEF_GetDistance(){
+	return distancia;
+}
+
+uint8_t MEF_GetAngle(){
+	return motor_angle;
 }
 
 void MEF_Update(){
@@ -50,17 +55,19 @@ void MEF_Update(){
 		distancia = 10;
 
 		Servo_SetAngle(&htim3, TIM_CHANNEL_1, motor_angle);
-		HC05_SendString("INICIO\n");
+		HC05_SendString("RADAR ACTIVADO\n");
+
 		MEF_Actual = MOVER_SERVO;
 		break;
 
 	case MOVER_SERVO:
 		if(sentido_giro){
-			motor_angle = motor_angle - VEL_MOTOR;		//Periodo: 1min:38s ; Giro muy lento ¿Aumentar?
+			motor_angle = motor_angle - VEL_MOTOR;
 		}else{
 			motor_angle = motor_angle + VEL_MOTOR;
 		}
 		Servo_SetAngle(&htim3, TIM_CHANNEL_1, motor_angle);
+
 		MEF_Actual = MEDIR_DISTANCIA;
 		break;
 
@@ -82,7 +89,7 @@ void MEF_Update(){
 			sentido_giro = 0;
 		}
 		if(motor_angle > 180 || motor_angle < 0){
-			Error_Handler();	//Reemplazar por una rutina de errores
+			Error_Handler();
 		}
 		MEF_Actual = MOVER_SERVO;
 		break;
@@ -97,16 +104,4 @@ void MEF_Update(){
 		break;
 
 	}
-}
-
-uint8_t getDistance(){
-	return distancia;
-}
-
-uint8_t getAngle(){
-	return motor_angle;
-}
-
-void Actualizar_LCD(){
-	LCD_Refresh = 1;
 }

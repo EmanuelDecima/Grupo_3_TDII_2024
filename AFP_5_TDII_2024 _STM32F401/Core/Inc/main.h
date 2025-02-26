@@ -42,6 +42,8 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
+#define REFRESH_RATE 1000
+
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
