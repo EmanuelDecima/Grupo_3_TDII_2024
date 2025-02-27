@@ -18,6 +18,7 @@ typedef enum {
 } MefState_t;
 
 MefState_t MEF_Actual;	//Variable de estado global
+bool alarm_on;
 
 //Servomotor
 uint8_t motor_angle;
@@ -40,22 +41,23 @@ uint8_t MEF_GetAngle(){
 	return motor_angle;
 }
 
+bool MEF_GetAlarmState(){
+	return alarm_on;
+}
+
 void MEF_Update(){
 	switch(MEF_Actual){
 	case INICIO:
-		//Inicializar Modulos
-		LCD_Init();
-		HCSR04_Init();
-		Servo_Init();
 
 		//Valores Iniciales de Variables
 		motor_angle = 0;
 		sentido_giro = 0;
 		umbral = 7;
 		distancia = 10;
+		alarm_on = 0;
 
 		Servo_SetAngle(&htim3, TIM_CHANNEL_1, motor_angle);
-		HC05_SendString("RADAR ACTIVADO\n");
+		Secuencia_Inicio();
 
 		MEF_Actual = MOVER_SERVO;
 		break;
@@ -76,6 +78,7 @@ void MEF_Update(){
 		if(distancia < umbral){
 			MEF_Actual = ALERTA;
 		}else{
+			alarm_on = 0;
 			HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, 0);
 			MEF_Actual = VERIFICAR_ANGULO;
 		}
@@ -95,6 +98,7 @@ void MEF_Update(){
 		break;
 
 	case ALERTA:
+		alarm_on = 1;
 		Mensaje_Alerta();
 		MEF_Actual = MEDIR_DISTANCIA;
 		break;

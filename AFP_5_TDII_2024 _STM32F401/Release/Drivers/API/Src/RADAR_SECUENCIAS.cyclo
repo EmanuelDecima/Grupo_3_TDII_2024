@@ -1,1 +1,2 @@
-../Drivers/API/Src/RADAR_SECUENCIAS.c:15:6:Mensaje_Alerta	1
+../Drivers/API/Src/RADAR_SECUENCIAS.c:10:6:Secuencia_Inicio	1
+../Drivers/API/Src/RADAR_SECUENCIAS.c:34:6:Mensaje_Alerta	1

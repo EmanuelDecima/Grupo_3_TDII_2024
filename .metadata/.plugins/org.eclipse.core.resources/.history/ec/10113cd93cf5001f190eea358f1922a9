@@ -1,0 +1,20 @@
+/*
+ * RADAR_MEF.h
+ *
+ *  Created on: Feb 14, 2025
+ *      Author: Grupo 3_TD2	Enrique Emanuel Decima, Castro Oscar Martin, Ortiz Nicolas Agustin
+ */
+
+#ifndef API_INC_RADAR_MEF_H_
+#define API_INC_RADAR_MEF_H_
+
+#include "Headers.h"
+
+bool_t alarm_on;
+
+void MEF_Init();
+uint8_t MEF_GetDistance();
+uint8_t MEF_GetAngle();
+void MEF_Update();
+
+#endif /* API_INC_RADAR_MEF_H_ */

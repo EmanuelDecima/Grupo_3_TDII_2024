@@ -10,6 +10,7 @@
 
 #include "Headers.h"
 
+void Secuencia_Inicio();
 void Mensaje_Alerta();
 
 #endif /* API_INC_RADAR_SECUENCIAS_H_ */

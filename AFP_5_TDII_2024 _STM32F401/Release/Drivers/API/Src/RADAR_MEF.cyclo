@@ -1,4 +1,5 @@
-../Drivers/API/Src/RADAR_MEF.c:30:6:MEF_Init	1
-../Drivers/API/Src/RADAR_MEF.c:35:9:MEF_GetDistance	1
-../Drivers/API/Src/RADAR_MEF.c:39:9:MEF_GetAngle	1
-../Drivers/API/Src/RADAR_MEF.c:43:6:MEF_Update	11
+../Drivers/API/Src/RADAR_MEF.c:31:6:MEF_Init	1
+../Drivers/API/Src/RADAR_MEF.c:36:9:MEF_GetDistance	1
+../Drivers/API/Src/RADAR_MEF.c:40:9:MEF_GetAngle	1
+../Drivers/API/Src/RADAR_MEF.c:44:6:MEF_GetAlarmState	1
+../Drivers/API/Src/RADAR_MEF.c:48:6:MEF_Update	11

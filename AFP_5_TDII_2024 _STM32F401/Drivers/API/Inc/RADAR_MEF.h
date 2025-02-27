@@ -13,6 +13,7 @@
 void MEF_Init();
 uint8_t MEF_GetDistance();
 uint8_t MEF_GetAngle();
+bool MEF_GetAlarmState();
 void MEF_Update();
 
 #endif /* API_INC_RADAR_MEF_H_ */

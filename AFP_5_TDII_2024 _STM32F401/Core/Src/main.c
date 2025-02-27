@@ -98,6 +98,10 @@ int main(void)
 	delay_t LCD_Refresh;
 	delayInit(&LCD_Refresh, REFRESH_RATE);	//Cada 1s se refresca la pantalla LCD
 
+	//Inicializar Modulos
+	LCD_Init();
+	HCSR04_Init();
+	Servo_Init();
 	MEF_Init();
 	LCD_Clear();
 
@@ -111,7 +115,7 @@ int main(void)
 	while (1)
 	{
 
-		if(delayRead(&LCD_Refresh)){
+		if(delayRead(&LCD_Refresh) && !(MEF_GetAlarmState())){
 			LCD_ShowData(MEF_GetDistance(), MEF_GetAngle());
 		}
 
