@@ -107,6 +107,11 @@ int main(void)
 
 	HC05_SendString("Sistema Encendido\n");
 
+	/*LED_PWR Indica que el dispositivo esta correctamente alimentado,
+	 * por lo tanto no debe cambiar su estado durante la ejecucion*/
+	HAL_GPIO_LockPin(LED_PWR_GPIO_Port, LED_PWR_Pin);
+
+	HAL_GPIO_LockPin(LED0_GPIO_Port, LED0_Pin); //Usado solo durante debug
 
 	/* USER CODE END 2 */
 
@@ -189,9 +194,7 @@ void Error_Handler(void)
 	__disable_irq();
 	HAL_GPIO_WritePin(LED_ON_GPIO_Port, LED_ON_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LED_ALARM_GPIO_Port, LED_ALARM_Pin, GPIO_PIN_RESET);
-	while (1)
-	{
-	}
+	while (1){}
 	/* USER CODE END Error_Handler_Debug */
 }
 
