@@ -1,13 +1,13 @@
-14:16:18 **** Incremental Build of configuration Release for project AFP_5_TDII_2024 _STM32F401 ****
+18:03:54 **** Incremental Build of configuration Release for project AFP_5_TDII_2024 _STM32F401 ****
 make -j2 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024 _STM32F401/Drivers/API" -I"C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024 _STM32F401/Drivers/API/Src" -I"C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024 _STM32F401/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Drivers/API/Src/RADAR_HCSR04.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024 _STM32F401/Drivers/API" -I"C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024 _STM32F401/Drivers/API/Src" -I"C:/Users/Estudiante.DESKTOP-5OVK98J/STM32CubeIDE/workspace_1.16.0/Grupo_3_TDII_2024/AFP_5_TDII_2024 _STM32F401/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/RADAR_HCSR04.d" -MT"Drivers/API/Src/RADAR_HCSR04.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/RADAR_HCSR04.o"
 arm-none-eabi-gcc -o "AFP_5_TDII_2024 _STM32F401.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Estudiante.DESKTOP-5OVK98J\STM32CubeIDE\workspace_1.16.0\Grupo_3_TDII_2024\AFP_5_TDII_2024 _STM32F401\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AFP_5_TDII_2024 _STM32F401.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: AFP_5_TDII_2024 _STM32F401.elf
  
 arm-none-eabi-size  AFP_5_TDII_2024\ _STM32F401.elf 
 arm-none-eabi-objdump -h -S AFP_5_TDII_2024\ _STM32F401.elf  > "AFP_5_TDII_2024 _STM32F401.list"
    text	   data	    bss	    dec	    hex	filename
-  15284	     92	   2268	  17644	   44ec	AFP_5_TDII_2024 _STM32F401.elf
+  15284	     92	   2236	  17612	   44cc	AFP_5_TDII_2024 _STM32F401.elf
 Finished building: default.size.stdout
  
 arm-none-eabi-objcopy  -O ihex AFP_5_TDII_2024\ _STM32F401.elf  "AFP_5_TDII_2024 _STM32F401.hex"
@@ -16,5 +16,5 @@ Finished building: AFP_5_TDII_2024 _STM32F401.list
 Finished building: AFP_5_TDII_2024 _STM32F401.hex
  
 
-14:16:20 Build Finished. 0 errors, 0 warnings. (took 2s.152ms)
+18:03:56 Build Finished. 0 errors, 0 warnings. (took 1s.888ms)
 

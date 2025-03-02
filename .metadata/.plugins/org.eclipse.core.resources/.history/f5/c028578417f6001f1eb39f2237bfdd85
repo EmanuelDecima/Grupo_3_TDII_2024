@@ -7,8 +7,8 @@
 
 #include "RADAR_HCSR04.h"
 
-#define FILTER_WIDTH 11
-#define MEASURES_DELAY 30	//Intervalo (ms) entre mediciones consecutivas
+#define FILTER_WIDTH 7
+#define MEASURES_DELAY 40	//Intervalo (ms) entre mediciones consecutivas
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim);
 

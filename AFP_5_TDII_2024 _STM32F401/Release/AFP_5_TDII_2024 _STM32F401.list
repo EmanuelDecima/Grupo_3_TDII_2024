@@ -21,9 +21,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   8 .data         0000005c  20000000  08003bc0  00005000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000002dc  2000005c  08003c1c  0000505c  2**2
+  9 .bss          000002bc  2000005c  08003c1c  0000505c  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000338  08003c1c  00005338  2**0
+ 10 ._user_heap_stack 00000600  20000318  08003c1c  00005318  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000505c  2**0
                   CONTENTS, READONLY
@@ -1255,7 +1255,7 @@ Disassembly of section .text:
  8000ee0:	e7fc      	b.n	8000edc <_sbrk+0x28>
  8000ee2:	bf00      	nop
  8000ee4:	200000cc 	.word	0x200000cc
- 8000ee8:	20000338 	.word	0x20000338
+ 8000ee8:	20000318 	.word	0x20000318
  8000eec:	20010000 	.word	0x20010000
  8000ef0:	00000400 	.word	0x00000400
 
@@ -1589,7 +1589,7 @@ Disassembly of section .text:
  800121c:	2000005c 	.word	0x2000005c
  8001220:	08003bc0 	.word	0x08003bc0
  8001224:	2000005c 	.word	0x2000005c
- 8001228:	20000338 	.word	0x20000338
+ 8001228:	20000318 	.word	0x20000318
 
 0800122c <ADC_IRQHandler>:
  800122c:	e7fe      	b.n	800122c <ADC_IRQHandler>
@@ -1644,15 +1644,15 @@ Disassembly of section .text:
 
 08001290 <HCSR04_GetMeasure>:
  8001290:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
- 8001294:	4c1f      	ldr	r4, [pc, #124]	@ (8001314 <HCSR04_GetMeasure+0x84>)
+ 8001294:	4d1f      	ldr	r5, [pc, #124]	@ (8001314 <HCSR04_GetMeasure+0x84>)
  8001296:	f8df 8088 	ldr.w	r8, [pc, #136]	@ 8001320 <HCSR04_GetMeasure+0x90>
  800129a:	4f1f      	ldr	r7, [pc, #124]	@ (8001318 <HCSR04_GetMeasure+0x88>)
- 800129c:	222d      	movs	r2, #45	@ 0x2d
- 800129e:	2100      	movs	r1, #0
- 80012a0:	4620      	mov	r0, r4
- 80012a2:	f001 ff91 	bl	80031c8 <memset>
- 80012a6:	4626      	mov	r6, r4
- 80012a8:	2500      	movs	r5, #0
+ 800129c:	2300      	movs	r3, #0
+ 800129e:	606b      	str	r3, [r5, #4]
+ 80012a0:	602b      	str	r3, [r5, #0]
+ 80012a2:	f8c5 3007 	str.w	r3, [r5, #7]
+ 80012a6:	462e      	mov	r6, r5
+ 80012a8:	461c      	mov	r4, r3
  80012aa:	2201      	movs	r2, #1
  80012ac:	f44f 5180 	mov.w	r1, #4096	@ 0x1000
  80012b0:	4640      	mov	r0, r8
@@ -1674,31 +1674,31 @@ Disassembly of section .text:
  80012d8:	4b10      	ldr	r3, [pc, #64]	@ (800131c <HCSR04_GetMeasure+0x8c>)
  80012da:	781b      	ldrb	r3, [r3, #0]
  80012dc:	f806 3b01 	strb.w	r3, [r6], #1
- 80012e0:	2005      	movs	r0, #5
- 80012e2:	3501      	adds	r5, #1
+ 80012e0:	201e      	movs	r0, #30
+ 80012e2:	3401      	adds	r4, #1
  80012e4:	f000 fab2 	bl	800184c <HAL_Delay>
- 80012e8:	2d2d      	cmp	r5, #45	@ 0x2d
+ 80012e8:	2c0b      	cmp	r4, #11
  80012ea:	d1de      	bne.n	80012aa <HCSR04_GetMeasure+0x1a>
- 80012ec:	222c      	movs	r2, #44	@ 0x2c
- 80012ee:	4623      	mov	r3, r4
+ 80012ec:	220a      	movs	r2, #10
+ 80012ee:	462b      	mov	r3, r5
  80012f0:	2100      	movs	r1, #0
  80012f2:	7818      	ldrb	r0, [r3, #0]
- 80012f4:	f813 5f01 	ldrb.w	r5, [r3, #1]!
+ 80012f4:	f813 4f01 	ldrb.w	r4, [r3, #1]!
  80012f8:	3101      	adds	r1, #1
- 80012fa:	42a8      	cmp	r0, r5
+ 80012fa:	42a0      	cmp	r0, r4
  80012fc:	bf84      	itt	hi
- 80012fe:	f803 5c01 	strbhi.w	r5, [r3, #-1]
+ 80012fe:	f803 4c01 	strbhi.w	r4, [r3, #-1]
  8001302:	7018      	strbhi	r0, [r3, #0]
  8001304:	428a      	cmp	r2, r1
  8001306:	d1f4      	bne.n	80012f2 <HCSR04_GetMeasure+0x62>
  8001308:	3a01      	subs	r2, #1
  800130a:	d1f0      	bne.n	80012ee <HCSR04_GetMeasure+0x5e>
- 800130c:	7da0      	ldrb	r0, [r4, #22]
+ 800130c:	7968      	ldrb	r0, [r5, #5]
  800130e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
  8001312:	bf00      	nop
  8001314:	200001a8 	.word	0x200001a8
  8001318:	20000118 	.word	0x20000118
- 800131c:	200001d5 	.word	0x200001d5
+ 800131c:	200001b3 	.word	0x200001b3
  8001320:	40020400 	.word	0x40020400
  8001324:	00000000 	.word	0x00000000
 
@@ -1769,12 +1769,12 @@ Disassembly of section .text:
  80013be:	bf00      	nop
  80013c0:	b020c49c 	.word	0xb020c49c
  80013c4:	3fa16872 	.word	0x3fa16872
- 80013c8:	200001d6 	.word	0x200001d6
- 80013cc:	200001e0 	.word	0x200001e0
- 80013d0:	200001dc 	.word	0x200001dc
- 80013d4:	200001d8 	.word	0x200001d8
+ 80013c8:	200001b4 	.word	0x200001b4
+ 80013cc:	200001c0 	.word	0x200001c0
+ 80013d0:	200001bc 	.word	0x200001bc
+ 80013d4:	200001b8 	.word	0x200001b8
  80013d8:	3fe00000 	.word	0x3fe00000
- 80013dc:	200001d5 	.word	0x200001d5
+ 80013dc:	200001b3 	.word	0x200001b3
  80013e0:	20000118 	.word	0x20000118
 
 080013e4 <LCD_SendCmd>:
@@ -1939,28 +1939,28 @@ Disassembly of section .text:
  8001586:	2200      	movs	r2, #0
  8001588:	701a      	strb	r2, [r3, #0]
  800158a:	4770      	bx	lr
- 800158c:	200001e9 	.word	0x200001e9
+ 800158c:	200001c9 	.word	0x200001c9
 
 08001590 <MEF_GetDistance>:
  8001590:	4b01      	ldr	r3, [pc, #4]	@ (8001598 <MEF_GetDistance+0x8>)
  8001592:	7818      	ldrb	r0, [r3, #0]
  8001594:	4770      	bx	lr
  8001596:	bf00      	nop
- 8001598:	200001e5 	.word	0x200001e5
+ 8001598:	200001c5 	.word	0x200001c5
 
 0800159c <MEF_GetAngle>:
  800159c:	4b01      	ldr	r3, [pc, #4]	@ (80015a4 <MEF_GetAngle+0x8>)
  800159e:	7818      	ldrb	r0, [r3, #0]
  80015a0:	4770      	bx	lr
  80015a2:	bf00      	nop
- 80015a4:	200001e7 	.word	0x200001e7
+ 80015a4:	200001c7 	.word	0x200001c7
 
 080015a8 <MEF_GetAlarmState>:
  80015a8:	4b01      	ldr	r3, [pc, #4]	@ (80015b0 <MEF_GetAlarmState+0x8>)
  80015aa:	7818      	ldrb	r0, [r3, #0]
  80015ac:	4770      	bx	lr
  80015ae:	bf00      	nop
- 80015b0:	200001e8 	.word	0x200001e8
+ 80015b0:	200001c8 	.word	0x200001c8
 
 080015b4 <MEF_Update>:
  80015b4:	b510      	push	{r4, lr}
@@ -2048,13 +2048,13 @@ Disassembly of section .text:
  8001666:	e7c3      	b.n	80015f0 <MEF_Update+0x3c>
  8001668:	2304      	movs	r3, #4
  800166a:	e7c1      	b.n	80015f0 <MEF_Update+0x3c>
- 800166c:	200001e9 	.word	0x200001e9
- 8001670:	200001e7 	.word	0x200001e7
+ 800166c:	200001c9 	.word	0x200001c9
+ 8001670:	200001c7 	.word	0x200001c7
  8001674:	200000d0 	.word	0x200000d0
- 8001678:	200001e6 	.word	0x200001e6
- 800167c:	200001e4 	.word	0x200001e4
- 8001680:	200001e5 	.word	0x200001e5
- 8001684:	200001e8 	.word	0x200001e8
+ 8001678:	200001c6 	.word	0x200001c6
+ 800167c:	200001c4 	.word	0x200001c4
+ 8001680:	200001c5 	.word	0x200001c5
+ 8001684:	200001c8 	.word	0x200001c8
  8001688:	40020400 	.word	0x40020400
 
 0800168c <Secuencia_Inicio>:
@@ -2224,7 +2224,7 @@ Disassembly of section .text:
  8001832:	6013      	str	r3, [r2, #0]
  8001834:	4770      	bx	lr
  8001836:	bf00      	nop
- 8001838:	200001ec 	.word	0x200001ec
+ 8001838:	200001cc 	.word	0x200001cc
  800183c:	20000004 	.word	0x20000004
 
 08001840 <HAL_GetTick>:
@@ -2232,7 +2232,7 @@ Disassembly of section .text:
  8001842:	6818      	ldr	r0, [r3, #0]
  8001844:	4770      	bx	lr
  8001846:	bf00      	nop
- 8001848:	200001ec 	.word	0x200001ec
+ 8001848:	200001cc 	.word	0x200001cc
 
 0800184c <HAL_Delay>:
  800184c:	b538      	push	{r3, r4, r5, lr}
@@ -5002,7 +5002,7 @@ Disassembly of section .text:
  80032ba:	e7ca      	b.n	8003252 <_free_r+0x22>
  80032bc:	bd38      	pop	{r3, r4, r5, pc}
  80032be:	bf00      	nop
- 80032c0:	20000334 	.word	0x20000334
+ 80032c0:	20000314 	.word	0x20000314
 
 080032c4 <sbrk_aligned>:
  80032c4:	b570      	push	{r4, r5, r6, lr}
@@ -5032,7 +5032,7 @@ Disassembly of section .text:
  80032fe:	d1f2      	bne.n	80032e6 <sbrk_aligned+0x22>
  8003300:	e7ef      	b.n	80032e2 <sbrk_aligned+0x1e>
  8003302:	bf00      	nop
- 8003304:	20000330 	.word	0x20000330
+ 8003304:	20000310 	.word	0x20000310
 
 08003308 <_malloc_r>:
  8003308:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -5142,19 +5142,19 @@ Disassembly of section .text:
  80033fe:	6005      	str	r5, [r0, #0]
  8003400:	e7d6      	b.n	80033b0 <_malloc_r+0xa8>
  8003402:	bf00      	nop
- 8003404:	20000334 	.word	0x20000334
+ 8003404:	20000314 	.word	0x20000314
 
 08003408 <__malloc_lock>:
  8003408:	4801      	ldr	r0, [pc, #4]	@ (8003410 <__malloc_lock+0x8>)
  800340a:	f7ff bf0f 	b.w	800322c <__retarget_lock_acquire_recursive>
  800340e:	bf00      	nop
- 8003410:	2000032c 	.word	0x2000032c
+ 8003410:	2000030c 	.word	0x2000030c
 
 08003414 <__malloc_unlock>:
  8003414:	4801      	ldr	r0, [pc, #4]	@ (800341c <__malloc_unlock+0x8>)
  8003416:	f7ff bf0a 	b.w	800322e <__retarget_lock_release_recursive>
  800341a:	bf00      	nop
- 800341c:	2000032c 	.word	0x2000032c
+ 800341c:	2000030c 	.word	0x2000030c
 
 08003420 <__ssputs_r>:
  8003420:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -5806,7 +5806,7 @@ Disassembly of section .text:
  8003a36:	b103      	cbz	r3, 8003a3a <_sbrk_r+0x1a>
  8003a38:	6023      	str	r3, [r4, #0]
  8003a3a:	bd38      	pop	{r3, r4, r5, pc}
- 8003a3c:	20000328 	.word	0x20000328
+ 8003a3c:	20000308 	.word	0x20000308
 
 08003a40 <memcpy>:
  8003a40:	440a      	add	r2, r1
