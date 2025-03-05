@@ -5,9 +5,9 @@ Aqui se subiran las Actividades de Formacion Practica (AFP) para la asignatura d
 El proyecto consiste en el desarrollo de un Radar Ultrasónico, diseñado para detectar objetos dentro de un rango de distancia determinado y alertar al usuario mediante mensajes a través de una pantalla LCD y un dispositivo conectado vía Bluetooth. Este sistema se basa en la medición de distancias utilizando un sensor ultrasónico HC-SR04, montado sobre un servomotor, que le permite escanear su entorno en un rango de 180°.
 
 ### Software Utilizado:
-Entorno de desarrollo: STM32CubeIDE
-Lenguaje: C (estándar GNU11)
-Bibliotecas HAL: STM32F4xx HAL Driver
+* Entorno de desarrollo: STM32CubeIDE
+* Lenguaje: C (estándar GNU11)
+* Bibliotecas HAL: STM32F4xx HAL Driver
 
 ### Hardware Utilizado:
 * STM32F401CCU6.
